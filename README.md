@@ -3,6 +3,6 @@ Group Name: TEAM_NAME
 
 [MVP Link](http://cs196.cs.illinois.edu)
 
-Team Members: hberens2
+Team Members: hberens2, atlasem2
 
 Project Manager: PM_NETID
