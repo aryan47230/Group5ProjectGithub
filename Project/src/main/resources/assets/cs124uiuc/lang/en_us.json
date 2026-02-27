@@ -1,0 +1,13 @@
+{
+  "itemGroup.cs124uiuc": "Example Mod Tab",
+  "block.cs124uiuc.example_block": "Example Block",
+  "item.cs124uiuc.example_item": "Example Item",
+
+  "cs124uiuc.configuration.title": "cs124uiuc Configs",
+  "cs124uiuc.configuration.section.cs124uiuc.common.toml": "cs124uiuc Configs",
+  "cs124uiuc.configuration.section.cs124uiuc.common.toml.title": "cs124uiuc Configs",
+  "cs124uiuc.configuration.items": "Item List",
+  "cs124uiuc.configuration.logDirtBlock": "Log Dirt Block",
+  "cs124uiuc.configuration.magicNumberIntroduction": "Magic Number Text",
+  "cs124uiuc.configuration.magicNumber": "Magic Number"
+}
