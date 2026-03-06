@@ -2,8 +2,11 @@ package com.example.examplemod;
 
 import org.slf4j.Logger;
 
+import com.example.examplemod.entity.ModEntities;
+import com.example.examplemod.entity.client.GooseRenderer;
 import com.mojang.logging.LogUtils;
 
+import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -19,9 +22,11 @@ import net.minecraft.world.level.material.MapColor;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.ModContainer;
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
@@ -81,6 +86,8 @@ public class cs124uiuc {
         // Do not add this line if there are no @SubscribeEvent-annotated functions in this class, like onServerStarting() below.
         NeoForge.EVENT_BUS.register(this);
 
+        ModEntities.register(modEventBus);
+
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
 
@@ -114,4 +121,14 @@ public class cs124uiuc {
         // Do something when the server starts
         LOGGER.info("HELLO from server starting");
     }
+
+    /*
+    @EventBusSubscriber(modid = cs124uiuc.MODID, bus = EventBusSubscriber.Bus.Mod, value=Dist.client)
+    public static class ClientModEvents {
+        @SubscribeEvent
+        public static void onClientSetup(FMLClientSetupEvent event) {
+            EntityRenderers.register(ModEntities.GOOSE.get(), GooseRenderer::new);
+        }
+    }
+        */
 }
