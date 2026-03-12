@@ -1,5 +1,7 @@
 package com.example.examplemod.entity.client;
 
+import org.jetbrains.annotations.NotNull;
+
 import com.example.examplemod.cs124uiuc;
 import com.example.examplemod.entity.custom.GooseEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -83,8 +85,8 @@ public class GooseModel extends EntityModel<GooseEntityRenderState>{
 		return LayerDefinition.create(meshdefinition, 32, 32);
 	}
 
-	public void setupAnim(GooseEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-        this.root().getAllParts().forEach(ModelPart::resetPose);
+	public void setupAnim(@NotNull GooseEntityRenderState renderState) {
+        //this.root().getAllParts().forEach(ModelPart::resetPose);
         //this.animateWalk(GooseAnimations.walk, limbSwing, limbSwingAmount, 1f, 1f);
 	}
 

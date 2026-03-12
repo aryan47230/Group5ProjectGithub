@@ -18,27 +18,24 @@ public class ModEntities {
     public static final DeferredRegister<EntityType<?>> ENTITY_TYPES;
     public static final Supplier<EntityType<GooseEntity>> GOOSE;
 
-    /*
-    public static final DeferredRegister<EntityType<?>> ENTITY_TYPES = 
-            DeferredRegister.create(BuiltInRegistries.ENTITY_TYPE, cs124uiuc.MODID);
-
-    public static final Supplier<EntityType<GooseEntity>> GOOSE =
-            ENTITY_TYPES.register(
-                "goose", 
-                () -> EntityType.Builder.of(
-                    GooseEntity::new, 
-                    MobCategory.MISC
-                )
-                .sized(0.5f, 0.5f)
-                .build(ResourceKey.create(Registries.ENTITY_TYPE, Identifier.fromNameSpaceAndPath("cs124uiuc", "goose"))));
-    */
-
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);
     }
 
     static {
-        ENTITY_TYPES = DeferredRegister.create(BuiltInRegistries.ENTITY_TYPE, cs124uiuc.MODID);
-        GOOSE = ENTITY_TYPES.register("goose", () -> Builder.of(GooseEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(50).setUpdateInterval(3).sized(0.5F, 0.5F).build(ResourceKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath("cs124uiuc", "goose"))));
+        ENTITY_TYPES = DeferredRegister.create(BuiltInRegistries.ENTITY_TYPE, 
+            cs124uiuc.MODID);
+        GOOSE = ENTITY_TYPES.register("goose", () -> Builder.of(GooseEntity::new, 
+            MobCategory.MONSTER)
+            .setShouldReceiveVelocityUpdates(true)
+            .setTrackingRange(50)
+            .setUpdateInterval(3)
+            .sized(1.0F, 1.0F)
+            .spawnDimensionsScale(4.0f)
+            .eyeHeight(0.5f)
+            .build(ResourceKey
+                .create(Registries.ENTITY_TYPE, 
+                    ResourceLocation
+                    .fromNamespaceAndPath("cs124uiuc", "goose"))));
     }
 }

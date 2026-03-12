@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 
 import com.example.examplemod.entity.ModEntities;
 import com.example.examplemod.entity.client.GooseRenderer;
+import com.example.examplemod.item.ModItems;
 import com.mojang.logging.LogUtils;
 
 import net.minecraft.client.renderer.entity.EntityRenderers;
@@ -15,6 +16,7 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -39,9 +41,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(cs124uiuc.MODID)
 public class cs124uiuc {
-    // Define mod id in a common place for everything to reference
     public static final String MODID = "cs124uiuc";
-    // Directly reference a slf4j logger
     public static final Logger LOGGER = LogUtils.getLogger();
     // Create a Deferred Register to hold Blocks which will all be registered under the "cs124uiuc" namespace
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(MODID);
@@ -55,7 +55,7 @@ public class cs124uiuc {
     // Creates a new BlockItem with the id "cs124uiuc:example_block", combining the namespace and path
     public static final DeferredItem<BlockItem> EXAMPLE_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("example_block", EXAMPLE_BLOCK);
 
-    // Creates a new food item with the id "cs124uiuc:example_id", nutrition 1 and saturation 2
+    //Creates a new food item with the id "cs124uiuc:example_id", nutrition 1 and saturation 2
     public static final DeferredItem<Item> EXAMPLE_ITEM = ITEMS.registerSimpleItem("example_item", p -> p.food(new FoodProperties.Builder()
             .alwaysEdible().nutrition(1).saturationModifier(2f).build()));
 
@@ -73,19 +73,17 @@ public class cs124uiuc {
     public cs124uiuc(IEventBus modEventBus, ModContainer modContainer) {
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
-
-        // Register the Deferred Register to the mod event bus so blocks get registered
+        NeoForge.EVENT_BUS.register(this);
         BLOCKS.register(modEventBus);
-        // Register the Deferred Register to the mod event bus so items get registered
         ITEMS.register(modEventBus);
-        // Register the Deferred Register to the mod event bus so tabs get registered
         CREATIVE_MODE_TABS.register(modEventBus);
 
         // Register ourselves for server and other game events we are interested in.
         // Note that this is necessary if and only if we want *this* class (cs124uiuc) to respond directly to events.
         // Do not add this line if there are no @SubscribeEvent-annotated functions in this class, like onServerStarting() below.
-        NeoForge.EVENT_BUS.register(this);
-
+        //NeoForge.EVENT_BUS.register(this);
+        
+        ModItems.register(modEventBus);
         ModEntities.register(modEventBus);
 
         // Register the item to a creative tab
@@ -112,6 +110,8 @@ public class cs124uiuc {
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
         if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
             event.accept(EXAMPLE_BLOCK_ITEM);
+        } else if (event.getTabKey() == CreativeModeTabs.SPAWN_EGGS) {
+            event.accept((ItemLike)ModItems.GOOSE_SPAWN_EGG.get());
         }
     }
 

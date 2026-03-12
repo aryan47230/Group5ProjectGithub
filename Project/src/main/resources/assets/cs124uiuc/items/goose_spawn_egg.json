@@ -1,0 +1,12 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "cs124uiuc:item/goose_spawn_egg",
+    "tints": [
+      {
+        "type": "minecraft:constant",
+        "value": 18687415
+      }
+    ]
+  }
+}
