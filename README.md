@@ -5,4 +5,4 @@ Group Name: Group 5 CS 124 Honors
 
 Team Members: hberens2, atlasem2, kageler2, atien, qandina2
 
-Project Manager: annette9
+Project Manager: annette9, wllei2
