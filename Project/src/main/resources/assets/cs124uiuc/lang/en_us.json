@@ -2,6 +2,14 @@
   "itemGroup.cs124uiuc": "Example Mod Tab",
   "block.cs124uiuc.example_block": "Example Block",
   "item.cs124uiuc.example_item": "Example Item",
+  "item.cs124uiuc.bismuth": "Bismuth",
+  "item.cs124uiuc.raw_bismuth": "Raw Bismuth",
+  
+  "item.cs124uiuc.bismuth_block": "Block of Bismuth",
+  "item.cs124uiuc.bismuth_ore": "Bismuth Ore",
+
+  "creativetab.cs124uiuc.bismuth_items": "Bismuth Items",
+  "creativetab.cs124uiuc.bismuth_blocks": "Bismuth Blocks",
 
   "cs124uiuc.configuration.title": "cs124uiuc Configs",
   "cs124uiuc.configuration.section.cs124uiuc.common.toml": "cs124uiuc Configs",
