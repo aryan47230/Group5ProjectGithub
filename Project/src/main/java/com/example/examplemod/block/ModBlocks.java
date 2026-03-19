@@ -28,7 +28,12 @@ public class ModBlocks {
     public static final DeferredBlock<Block> BISMUTH_ORE = registerBlock("bismuth_ore",
             location -> new Block(BlockBehaviour.Properties.of()
                     .setId(ResourceKey.create(Registries.BLOCK, location))
-                    .strength(4f).requiresCorrectToolForDrops().sound(SoundType.AMETHYST)));
+                    .strength(4f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+
+     public static final DeferredBlock<Block> BISMUTH_DEEPSLATE_ORE = registerBlock("bismuth_deepslate_ore",
+            location -> new Block(BlockBehaviour.Properties.of()
+                    .setId(ResourceKey.create(Registries.BLOCK, location))
+                    .strength(4f).requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE)));
 
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Function<ResourceLocation, T> blockFactory) {
         DeferredBlock<T> toReturn = BLOCKS.register(name, blockFactory);
