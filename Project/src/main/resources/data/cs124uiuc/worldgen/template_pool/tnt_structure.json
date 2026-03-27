@@ -1,0 +1,60 @@
+{
+    "name": "cs124uiuc:tnt_structure",
+    "elements": [
+        {
+            "weight": 1,
+            "element": {
+                "element_type": "minecraft:single_pool_element",
+                "projection": "rigid",
+                "location": "cs124uiuc:tnt3x3x3",
+                "processors": []
+            }
+        },
+        {
+            "weight": 1,
+            "element": {
+                "element_type": "minecraft:single_pool_element",
+                "projection": "rigid",
+                "location": "cs124uiuc:tnt9x9x3",
+                "processors": []
+            }
+        },
+        {
+            "weight": 1,
+            "element": {
+                "element_type": "minecraft:single_pool_element",
+                "projection": "rigid",
+                "location": "cs124uiuc:tnt9x9x9",
+                "processors": []
+            }
+        },
+        {
+            "weight": 1,
+            "element": {
+                "element_type": "minecraft:single_pool_element",
+                "projection": "rigid",
+                "location": "cs124uiuc:tnt27x9x9",
+                "processors": []
+            }
+        },
+        {
+            "weight": 1,
+            "element": {
+                "element_type": "minecraft:single_pool_element",
+                "projection": "rigid",
+                "location": "cs124uiuc:tnt27x9x27",
+                "processors": []
+            }
+        },
+        {
+            "weight": 1,
+            "element": {
+                "element_type": "minecraft:single_pool_element",
+                "projection": "rigid",
+                "location": "cs124uiuc:tnt27x27x27",
+                "processors": []
+            }
+        }
+    ],
+    "fallback": "minecraft:empty"
+}
