@@ -12,6 +12,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import com.example.examplemod.block.custom.MagicBlock;
 
 import java.util.function.Function;
 
@@ -34,6 +35,11 @@ public class ModBlocks {
             location -> new Block(BlockBehaviour.Properties.of()
                     .setId(ResourceKey.create(Registries.BLOCK, location))
                     .strength(4f).requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE)));
+
+        public static final DeferredBlock<Block> MAGIC_BLOCK = registerBlock("magic_block",
+                location -> new MagicBlock(BlockBehaviour.Properties.of()
+                    .setId(ResourceKey.create(Registries.BLOCK, location))
+                    .strength(2f).requiresCorrectToolForDrops()));
 
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Function<ResourceLocation, T> blockFactory) {
         DeferredBlock<T> toReturn = BLOCKS.register(name, blockFactory);
