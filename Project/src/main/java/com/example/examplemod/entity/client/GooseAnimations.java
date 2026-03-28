@@ -46,7 +46,7 @@ public class GooseAnimations {
 		))
 		.build();
 
-	public static final AnimationDefinition walk = AnimationDefinition.Builder.withLength(1.0F).looping()
+	public static final AnimationDefinition walking = AnimationDefinition.Builder.withLength(1.0F).looping()
 		.addAnimation("rleg", new AnimationChannel(AnimationChannel.Targets.ROTATION, 
 			new Keyframe(0.0F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR),
 			new Keyframe(0.25F, KeyframeAnimations.degreeVec(0.0F, 0.0F, -22.5F), AnimationChannel.Interpolations.CATMULLROM),
@@ -87,7 +87,7 @@ public class GooseAnimations {
 		))
 		.build();
 
-	public static final AnimationDefinition attack = AnimationDefinition.Builder.withLength(0.5F).looping()
+	public static final AnimationDefinition attacking = AnimationDefinition.Builder.withLength(0.5F).looping()
 		.addAnimation("goose", new AnimationChannel(AnimationChannel.Targets.POSITION, 
 			new Keyframe(0.0F, KeyframeAnimations.posVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR),
 			new Keyframe(0.25F, KeyframeAnimations.posVec(0.0F, 0.5F, 0.0F), AnimationChannel.Interpolations.CATMULLROM),

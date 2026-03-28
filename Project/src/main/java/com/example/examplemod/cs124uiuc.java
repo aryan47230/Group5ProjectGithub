@@ -3,19 +3,27 @@ package com.example.examplemod;
 import org.slf4j.Logger;
 
 import com.example.examplemod.entity.ModEntities;
+import com.example.examplemod.entity.client.GooseModel;
 import com.example.examplemod.entity.client.GooseRenderer;
+import com.example.examplemod.entity.custom.GooseEntity;
 import com.example.examplemod.item.ModItems;
+//import com.example.examplemod.item.UsePortalConsumeEffect;
+import com.example.examplemod.sound.ModSounds;
 import com.mojang.logging.LogUtils;
+import java.util.function.Supplier;
 
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.consume_effects.ConsumeEffect;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -30,6 +38,7 @@ import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
@@ -49,6 +58,7 @@ public class cs124uiuc {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(MODID);
     // Create a Deferred Register to hold CreativeModeTabs which will all be registered under the "cs124uiuc" namespace
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MODID);
+    //public static final DeferredRegister<ConsumeEffect.Type<?>> CONSUME_EFFECT_TYPES;
 
     // Creates a new Block with the id "cs124uiuc:example_block", combining the namespace and path
     public static final DeferredBlock<Block> EXAMPLE_BLOCK = BLOCKS.registerSimpleBlock("example_block", p -> p.mapColor(MapColor.STONE));
@@ -77,6 +87,7 @@ public class cs124uiuc {
         BLOCKS.register(modEventBus);
         ITEMS.register(modEventBus);
         CREATIVE_MODE_TABS.register(modEventBus);
+        //CONSUME_EFFECT_TYPES.register(modEventBus);
 
         // Register ourselves for server and other game events we are interested in.
         // Note that this is necessary if and only if we want *this* class (cs124uiuc) to respond directly to events.
@@ -85,6 +96,7 @@ public class cs124uiuc {
         
         ModItems.register(modEventBus);
         ModEntities.register(modEventBus);
+        ModSounds.register(modEventBus);
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
@@ -129,6 +141,16 @@ public class cs124uiuc {
         public static void onClientSetup(FMLClientSetupEvent event) {
             EntityRenderers.register(ModEntities.GOOSE.get(), GooseRenderer::new);
         }
+    }
+    
+    @SubscribeEvent
+    public static void registerEntityRenderer(EntityRenderersEvent.RegisterRenderers event) {
+        event.registerEntityRenderer((EntityType)GooseEntity, (m) -> new GooseRenderer(m));
+    }
+
+    @SubscribeEvent
+    public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
+        event.registerLayerDefinition(GooseModel.LAYER_LOCATION, GooseModel::createBodyLayer);
     }
         */
 }

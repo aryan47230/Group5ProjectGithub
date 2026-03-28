@@ -13,13 +13,15 @@ import com.example.examplemod.entity.client.GooseModel;
 import com.example.examplemod.entity.client.GooseEntityRenderState;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.item.ItemDisplayContext;
 
 public class GooseRenderer extends MobRenderer<GooseEntity, GooseEntityRenderState, GooseModel> {
     public GooseRenderer(EntityRendererProvider.Context context) {
         super(context, new GooseModel(context.bakeLayer(GooseModel.LAYER_LOCATION)), 0.5F);
     }
 
-    public @NotNull GooseEntityRenderState createRenderState() {
+    public GooseEntityRenderState createRenderState() {
         return new GooseEntityRenderState();
     }
 
@@ -28,5 +30,9 @@ public class GooseRenderer extends MobRenderer<GooseEntity, GooseEntityRenderSta
         return gooseEntityRenderState.skinTexture;
     }
 
-    
+    public void extractRenderState(GooseEntity p_363999_, GooseEntityRenderState p_366002_, float p_362989_) {
+        super.extractRenderState(p_363999_, p_366002_, p_362989_);
+        //this.itemModelResolver.updateForLiving(p_366002_.rightHandItem, p_363999_.getMainHandItem(), ItemDisplayContext.THIRD_PERSON_RIGHT_HAND, p_363999_);
+        p_366002_.entity = p_363999_;
+    }
 }
