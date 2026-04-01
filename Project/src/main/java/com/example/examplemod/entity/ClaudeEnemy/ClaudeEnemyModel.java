@@ -1,9 +1,6 @@
-package com.example.examplemod.entity.ChallenBoss;
+package com.example.examplemod.entity.ClaudeEnemy;
 
-// Made with Blockbench 5.0.7
-// Exported for Minecraft version 1.17 or later with Mojang mappings
-// Paste this class into your mod and generate all required imports
-
+import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 
 import net.minecraft.client.model.EntityModel;
@@ -18,16 +15,15 @@ import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 
-import com.example.examplemod.cs124uiuc;
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.mojang.blaze3d.vertex.PoseStack;
+// Made with Blockbench 5.1.1
+// Exported for Minecraft version 1.17 or later with Mojang mappings
+// Paste this class into your mod and generate all required imports
 
-public class ChallenBossModel extends EntityModel<ChallenBossRenderState> {
+public class ClaudeEnemyModel extends EntityModel<ClaudeEnemyRenderState> {
 	// This layer location should be baked with EntityRendererProvider.Context in
 	// the entity renderer and passed into this model's constructor
 	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(
-			ResourceLocation.fromNamespaceAndPath(cs124uiuc.MODID, "challen_boss"), "main");
+			ResourceLocation.fromNamespaceAndPath("cs124uiuc", "claude_enemy"), "main");
 	private final ModelPart torso;
 	private final ModelPart middle;
 	private final ModelPart upper;
@@ -38,7 +34,7 @@ public class ChallenBossModel extends EntityModel<ChallenBossRenderState> {
 	private final ModelPart heads;
 	private final ModelPart bar;
 
-	public ChallenBossModel(ModelPart root) {
+	public ClaudeEnemyModel(ModelPart root) {
 		super(root);
 		this.torso = root.getChild("torso");
 		this.middle = this.torso.getChild("middle");
@@ -90,7 +86,7 @@ public class ChallenBossModel extends EntityModel<ChallenBossRenderState> {
 
 		PartDefinition leg1_r1 = footr
 				.addOrReplaceChild("leg1_r1",
-						CubeListBuilder.create().texOffs(12, 21).addBox(-1.0F, -11.0F, -1.0F, 1.0F, 11.0F, 1.0F,
+						CubeListBuilder.create().texOffs(12, 20).addBox(-1.0F, -11.0F, -1.0F, 1.0F, 11.0F, 1.0F,
 								new CubeDeformation(0.0F)),
 						PartPose.offsetAndRotation(-6.0F, 0.0F, 0.0F, 0.1309F, 0.0F, 0.0F));
 
@@ -99,7 +95,7 @@ public class ChallenBossModel extends EntityModel<ChallenBossRenderState> {
 
 		PartDefinition leg2_r1 = footl
 				.addOrReplaceChild("leg2_r1",
-						CubeListBuilder.create().texOffs(16, 21).addBox(-1.0F, -11.0F, -1.0F, 1.0F, 11.0F, 1.0F,
+						CubeListBuilder.create().texOffs(16, 20).addBox(-1.0F, -11.0F, -1.0F, 1.0F, 11.0F, 1.0F,
 								new CubeDeformation(0.0F)),
 						PartPose.offsetAndRotation(6.0F, 0.0F, 0.0F, 0.1309F, 0.0F, 0.0F));
 
@@ -139,25 +135,26 @@ public class ChallenBossModel extends EntityModel<ChallenBossRenderState> {
 						new CubeDeformation(0.0F)),
 				PartPose.offsetAndRotation(-5.0F, -24.0F, -1.0F, -0.2182F, 0.0F, 0.1745F));
 
-		return LayerDefinition.create(meshdefinition, 64, 64);
+		return LayerDefinition.create(meshdefinition, 32, 32);
 	}
 
-	@Override
-	public void setupAnim(ChallenBossRenderState renderState) {
-
-	}
+	// @Override
 	// public void setupAnim(Entity entity, float limbSwing, float limbSwingAmount,
-	// float ageInTicks, float netHeadYaw,
-	// float headPitch) {
+	// float ageInTicks, float netHeadYaw, float headPitch) {
 
 	// }
 
 	// @Override
 	// public void renderToBuffer(PoseStack poseStack, VertexConsumer
-	// vertexConsumer, int packedLight, int packedOverlay) {
-	// torso.render(poseStack, vertexConsumer, packedLight, packedOverlay);
-	// legs.render(poseStack, vertexConsumer, packedLight, packedOverlay);
-	// heads.render(poseStack, vertexConsumer, packedLight, packedOverlay);
-	// bar.render(poseStack, vertexConsumer, packedLight, packedOverlay);
+	// vertexConsumer, int packedLight, int packedOverlay, float red, float green,
+	// float blue, float alpha) {
+	// torso.render(poseStack, vertexConsumer, packedLight, packedOverlay, red,
+	// green, blue, alpha);
+	// legs.render(poseStack, vertexConsumer, packedLight, packedOverlay, red,
+	// green, blue, alpha);
+	// heads.render(poseStack, vertexConsumer, packedLight, packedOverlay, red,
+	// green, blue, alpha);
+	// bar.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green,
+	// blue, alpha);
 	// }
 }

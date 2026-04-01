@@ -1,9 +1,10 @@
-package com.example.examplemod.entity.ChallenBoss;
+package com.example.examplemod.entity.ClaudeEnemy;
 
-import static com.example.examplemod.cs124uiuc.CHALLEN_BOSS;
-import static com.example.examplemod.cs124uiuc.CHALLEN_BOSS_LAYER;
+import static com.example.examplemod.cs124uiuc.CLAUDE_ENEMY;
+import static com.example.examplemod.cs124uiuc.CLAUDE_ENEMY_LAYER;
 
 import com.example.examplemod.cs124uiuc;
+import com.example.examplemod.entity.ClaudeEnemy.ClaudeEnemyRenderer;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -18,24 +19,23 @@ import net.minecraft.client.model.geom.EntityModelSet;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
-import com.example.examplemod.entity.ChallenBoss.ChallenBossRenderer;
 
-public class ChallenBossRenderLayer extends RenderLayer<ChallenBossRenderState, ChallenBossModel> {
-    private final ChallenBossModel model;
+public class ClaudeEnemyRenderLayer extends RenderLayer<ClaudeEnemyRenderState, ClaudeEnemyModel> {
+    private final ClaudeEnemyModel model;
 
-    public ChallenBossRenderLayer(ChallenBossRenderer renderer, EntityModelSet entityModelSet) {
+    public ClaudeEnemyRenderLayer(ClaudeEnemyRenderer renderer, EntityModelSet entityModelSet) {
         super(renderer);
-        this.model = new ChallenBossModel(entityModelSet.bakeLayer(CHALLEN_BOSS_LAYER));
+        this.model = new ClaudeEnemyModel(entityModelSet.bakeLayer(CLAUDE_ENEMY_LAYER));
     }
 
     @Override
     public void submit(PoseStack poseStack, SubmitNodeCollector collector, int lightCoords,
-            ChallenBossRenderState renderState, float yRot, float xRot) {
+            ClaudeEnemyRenderState renderState, float yRot, float xRot) {
         collector
                 .order(1)
                 .submitModel(this.model, renderState, poseStack,
                         RenderType.entitySolid(ResourceLocation.fromNamespaceAndPath(cs124uiuc.MODID,
-                                "textures/entity/challen_boss/challen_boss.png")),
+                                "textures/entity/claude_enemy/claude_enemy.png")),
                         lightCoords, (int) yRot, (int) xRot, null);
     }
 

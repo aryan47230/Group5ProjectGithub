@@ -1,4 +1,4 @@
-package com.example.examplemod.entity.ChallenBoss;
+package com.example.examplemod.entity.ClaudeEnemy;
 
 import com.example.examplemod.cs124uiuc;
 
@@ -17,30 +17,30 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.state.CameraRenderState;
 
-public class ChallenBossRenderer extends LivingEntityRenderer<ChallenBoss, ChallenBossRenderState, ChallenBossModel> {
-    public ChallenBossRenderer(EntityRendererProvider.Context context) {
-        super(context, new ChallenBossModel(context.bakeLayer(cs124uiuc.CHALLEN_BOSS_LAYER)), 0.5f);
-        this.addLayer(new ChallenBossRenderLayer(this, context.getModelSet()));
+public class ClaudeEnemyRenderer extends LivingEntityRenderer<ClaudeEnemy, ClaudeEnemyRenderState, ClaudeEnemyModel> {
+    public ClaudeEnemyRenderer(EntityRendererProvider.Context context) {
+        super(context, new ClaudeEnemyModel(context.bakeLayer(cs124uiuc.CLAUDE_ENEMY_LAYER)), 0.5f);
+        this.addLayer(new ClaudeEnemyRenderLayer(this, context.getModelSet()));
     }
 
     @Override
-    public ChallenBossRenderState createRenderState() {
-        return new ChallenBossRenderState();
+    public ClaudeEnemyRenderState createRenderState() {
+        return new ClaudeEnemyRenderState();
     }
 
     @Override
-    public void extractRenderState(ChallenBoss entity, ChallenBossRenderState state, float partialTick) {
+    public void extractRenderState(ClaudeEnemy entity, ClaudeEnemyRenderState state, float partialTick) {
         super.extractRenderState(entity, state, partialTick);
     }
 
     @Override
-    public void submit(ChallenBossRenderState renderState, PoseStack poseStack, SubmitNodeCollector collector,
+    public void submit(ClaudeEnemyRenderState renderState, PoseStack poseStack, SubmitNodeCollector collector,
             CameraRenderState cameraState) {
         super.submit(renderState, poseStack, collector, cameraState);
     }
 
     @Override
-    public ResourceLocation getTextureLocation(ChallenBossRenderState state) {
-        return ResourceLocation.fromNamespaceAndPath(cs124uiuc.MODID, "textures/entity/challen_boss/challen_boss.png");
+    public ResourceLocation getTextureLocation(ClaudeEnemyRenderState state) {
+        return ResourceLocation.fromNamespaceAndPath(cs124uiuc.MODID, "textures/entity/claude_enemy/claude_enemy.png");
     }
 }

@@ -1,4 +1,4 @@
-package com.example.examplemod.entity.ChallenBoss;
+package com.example.examplemod.entity.ClaudeEnemy;
 
 import javax.swing.plaf.metal.MetalLabelUI;
 import javax.swing.text.html.parser.Entity;
@@ -23,8 +23,8 @@ import net.minecraft.world.entity.ai.goal.ZombieAttackGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 
-public class ChallenBoss extends Monster {
-    public ChallenBoss(EntityType<? extends Monster> type, Level level) {
+public class ClaudeEnemy extends Monster {
+    public ClaudeEnemy(EntityType<? extends Monster> type, Level level) {
         super(type, level);
     }
 

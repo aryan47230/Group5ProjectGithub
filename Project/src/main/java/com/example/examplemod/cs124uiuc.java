@@ -38,7 +38,7 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import com.example.examplemod.dimension.ModDimensions;
-import com.example.examplemod.entity.ChallenBoss.ChallenBoss;
+import com.example.examplemod.entity.ClaudeEnemy.ClaudeEnemy;
 
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
@@ -64,15 +64,15 @@ public class cs124uiuc {
 
         public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(Registries.ENTITY_TYPE,
                         MODID);
-        public static final Supplier<EntityType<ChallenBoss>> CHALLEN_BOSS = ENTITIES.register("challen_boss",
-                        () -> EntityType.Builder.of(ChallenBoss::new, MobCategory.MONSTER)
+        public static final Supplier<EntityType<ClaudeEnemy>> CLAUDE_ENEMY = ENTITIES.register("claude_enemy",
+                        () -> EntityType.Builder.of(ClaudeEnemy::new, MobCategory.MONSTER)
                                         .sized(0.6f, 1.8f) // Hitbox size
                                         .build(ResourceKey.create(
                                                         Registries.ENTITY_TYPE,
-                                                        ResourceLocation.fromNamespaceAndPath(MODID, "challen_boss"))));
+                                                        ResourceLocation.fromNamespaceAndPath(MODID, "claude_enemy"))));
 
-        public static final ModelLayerLocation CHALLEN_BOSS_LAYER = new ModelLayerLocation(
-                        ResourceLocation.fromNamespaceAndPath(MODID, "challen_boss"), "main");
+        public static final ModelLayerLocation CLAUDE_ENEMY_LAYER = new ModelLayerLocation(
+                        ResourceLocation.fromNamespaceAndPath(MODID, "claude_enemy"), "main");
 
         // Creates a new Block with the id "cs124uiuc:example_block", combining the
         // namespace and path

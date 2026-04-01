@@ -14,12 +14,13 @@ import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent.RegisterRenderers;
 
-import static com.example.examplemod.cs124uiuc.CHALLEN_BOSS;
-import static com.example.examplemod.cs124uiuc.CHALLEN_BOSS_LAYER;
+import static com.example.examplemod.cs124uiuc.CLAUDE_ENEMY;
+import static com.example.examplemod.cs124uiuc.CLAUDE_ENEMY_LAYER;
 
-import com.example.examplemod.entity.ChallenBoss.ChallenBoss;
-import com.example.examplemod.entity.ChallenBoss.ChallenBossModel;
-import com.example.examplemod.entity.ChallenBoss.ChallenBossRenderer;
+import com.example.examplemod.entity.ClaudeEnemy.ClaudeEnemy;
+import com.example.examplemod.entity.ClaudeEnemy.ClaudeEnemy;
+import com.example.examplemod.entity.ClaudeEnemy.ClaudeEnemyModel;
+import com.example.examplemod.entity.ClaudeEnemy.ClaudeEnemyRenderer;
 
 // This class will not load on dedicated servers. Accessing client side code from here is safe.
 @Mod(value = cs124uiuc.MODID, dist = Dist.CLIENT)
@@ -45,26 +46,26 @@ public class cs124uiucClient {
 
     @SubscribeEvent // on the mod event bus only on the physical client
     public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
-        event.registerEntityRenderer(CHALLEN_BOSS.get(), ChallenBossRenderer::new);
+        event.registerEntityRenderer(CLAUDE_ENEMY.get(), ClaudeEnemyRenderer::new);
     }
 
     @SubscribeEvent
     public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
-        event.registerLayerDefinition(CHALLEN_BOSS_LAYER, ChallenBossModel::createBodyLayer);
+        event.registerLayerDefinition(CLAUDE_ENEMY_LAYER, ClaudeEnemyModel::createBodyLayer);
     }
 
     @SubscribeEvent // on the mod event bus
     public static void createDefaultAttributes(EntityAttributeCreationEvent event) {
         event.put(
                 // Your entity type.
-                CHALLEN_BOSS.get(),
+                CLAUDE_ENEMY.get(),
                 // An AttributeSupplier. This is typically created by calling
                 // LivingEntity#createLivingAttributes,
                 // setting your values on it, and calling #build. You can also create the
                 // AttributeSupplier from scratch
                 // if you want, see the source of LivingEntity#createLivingAttributes for an
                 // example.
-                ChallenBoss.createAttributes()
+                ClaudeEnemy.createAttributes()
                         .build());
     }
 }
