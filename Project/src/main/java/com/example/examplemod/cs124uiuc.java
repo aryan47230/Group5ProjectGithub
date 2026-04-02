@@ -7,6 +7,10 @@ import com.example.examplemod.entity.client.GooseModel;
 import com.example.examplemod.entity.client.GooseRenderer;
 import com.example.examplemod.entity.custom.GooseEntity;
 import com.example.examplemod.item.ModItems;
+<<<<<<< Updated upstream
+=======
+import com.example.examplemod.item.UsePortalConsumeEffect;
+>>>>>>> Stashed changes
 //import com.example.examplemod.item.UsePortalConsumeEffect;
 import com.example.examplemod.sound.ModSounds;
 import com.mojang.logging.LogUtils;
@@ -17,6 +21,10 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
+<<<<<<< Updated upstream
+=======
+import net.minecraft.util.ExtraCodecs;
+>>>>>>> Stashed changes
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BlockItem;
@@ -59,6 +67,17 @@ public class cs124uiuc {
     // Create a Deferred Register to hold CreativeModeTabs which will all be registered under the "cs124uiuc" namespace
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MODID);
     //public static final DeferredRegister<ConsumeEffect.Type<?>> CONSUME_EFFECT_TYPES;
+<<<<<<< Updated upstream
+=======
+    public static final DeferredRegister<ConsumeEffect.Type<?>> CONSUME_EFFECT_TYPES = DeferredRegister.create(Registries.CONSUME_EFFECT_TYPE, MODID);
+    public static final Supplier<ConsumeEffect.Type<UsePortalConsumeEffect>> USE_PORTAL = 
+    //CONSUME_EFFECT_TYPES.register("use_portal", () -> new ConsumeEffect.Type<>(UsePortalConsumeEffect::new));
+    
+    CONSUME_EFFECT_TYPES.register("use_portal", () -> new ConsumeEffect.Type<>(
+        UsePortalConsumeEffect.CODEC, UsePortalConsumeEffect.STREAM_CODEC
+    ));
+    
+>>>>>>> Stashed changes
 
     // Creates a new Block with the id "cs124uiuc:example_block", combining the namespace and path
     public static final DeferredBlock<Block> EXAMPLE_BLOCK = BLOCKS.registerSimpleBlock("example_block", p -> p.mapColor(MapColor.STONE));
@@ -87,7 +106,11 @@ public class cs124uiuc {
         BLOCKS.register(modEventBus);
         ITEMS.register(modEventBus);
         CREATIVE_MODE_TABS.register(modEventBus);
+<<<<<<< Updated upstream
         //CONSUME_EFFECT_TYPES.register(modEventBus);
+=======
+        CONSUME_EFFECT_TYPES.register(modEventBus);
+>>>>>>> Stashed changes
 
         // Register ourselves for server and other game events we are interested in.
         // Note that this is necessary if and only if we want *this* class (cs124uiuc) to respond directly to events.
