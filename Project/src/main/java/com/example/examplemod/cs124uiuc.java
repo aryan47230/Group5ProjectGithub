@@ -34,6 +34,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import com.example.examplemod.item.ModItems;
 import com.example.examplemod.block.ModBlocks;
 import com.example.examplemod.item.ModCreativeModeTabs;
+import com.example.examplemod.block.entity.ModBlockEntities;
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(cs124uiuc.MODID)
@@ -54,6 +55,7 @@ public class cs124uiuc {
         // Register ModItems
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
+        ModBlockEntities.register(modEventBus);
 
         // Register ourselves for server and other game events we are interested in.
         // Note that this is necessary if and only if we want *this* class (cs124uiuc) to respond directly to events.

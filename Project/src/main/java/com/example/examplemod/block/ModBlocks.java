@@ -13,6 +13,7 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import com.example.examplemod.block.custom.MagicBlock;
+import com.example.examplemod.block.custom.PedestalBlock;
 
 import java.util.function.Function;
 
@@ -38,6 +39,11 @@ public class ModBlocks {
 
         public static final DeferredBlock<Block> MAGIC_BLOCK = registerBlock("magic_block",
                 location -> new MagicBlock(BlockBehaviour.Properties.of()
+                    .setId(ResourceKey.create(Registries.BLOCK, location))
+                    .strength(2f).requiresCorrectToolForDrops()));
+
+        public static final DeferredBlock<Block> PEDESTAL = registerBlock("pedestal",
+                location -> new PedestalBlock(BlockBehaviour.Properties.of().noOcclusion()
                     .setId(ResourceKey.create(Registries.BLOCK, location))
                     .strength(2f).requiresCorrectToolForDrops()));
 

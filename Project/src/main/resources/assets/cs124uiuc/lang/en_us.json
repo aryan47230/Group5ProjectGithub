@@ -9,8 +9,12 @@
   "item.cs124uiuc.bismuth_deepslate_ore": "Bismuth Deepslate Ore",
   "item.cs124uiuc.magic_block": "Magic Block",
 
+  "item.tutorialmod.pedestal": "Pedestal",
+
   "creativetab.cs124uiuc.bismuth_items": "Bismuth Items",
   "creativetab.cs124uiuc.bismuth_blocks": "Bismuth Blocks",
+
+  
 
   "cs124uiuc.configuration.title": "cs124uiuc Configs",
   "cs124uiuc.configuration.section.cs124uiuc.common.toml": "cs124uiuc Configs",
