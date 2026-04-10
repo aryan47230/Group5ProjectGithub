@@ -33,6 +33,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.BISMUTH_ORE.get());
                         output.accept(ModBlocks.BISMUTH_DEEPSLATE_ORE.get());
                         output.accept(ModBlocks.MAGIC_BLOCK.get());
+                        output.accept(ModBlocks.PEDESTAL.get());
                     }).build());
 
     

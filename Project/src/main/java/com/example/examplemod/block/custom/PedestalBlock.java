@@ -58,13 +58,14 @@ public class PedestalBlock extends BaseEntityBlock {
     protected InteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos,
                                               Player player, InteractionHand hand, BlockHitResult hitResult) {
         if(level.getBlockEntity(pos) instanceof PedestalBlockEntity pedestalBlockEntity) {
-            if(pedestalBlockEntity.inventory.getStackInSlot(0).isEmpty() && !stack.isEmpty()) {
-                pedestalBlockEntity.inventory.insertItem(0, stack.copy(), false);
+            if(pedestalBlockEntity.item.isEmpty() && !stack.isEmpty()) {
+                pedestalBlockEntity.item = stack.copyWithCount(1);
                 stack.shrink(1);
+                pedestalBlockEntity.setChanged();
+                level.sendBlockUpdated(pos, state, state, 3);
                 level.playSound(player, pos, SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS, 1f, 2f);
-            } else if(stack.isEmpty()) {
-                ItemStack stackOnPedestal = pedestalBlockEntity.inventory.extractItem(0, 1, false);
-                player.setItemInHand(InteractionHand.MAIN_HAND, stackOnPedestal);
+            } else if(stack.isEmpty() && !pedestalBlockEntity.item.isEmpty()) {
+                player.setItemInHand(InteractionHand.MAIN_HAND, pedestalBlockEntity.item);
                 pedestalBlockEntity.clearContents();
                 level.playSound(player, pos, SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS, 1f, 1f);
             }
