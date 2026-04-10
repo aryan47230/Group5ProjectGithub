@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "powered=false": { "model": "cs124project:block/id_scanner" },
+    "powered=true":  { "model": "cs124project:block/id_scanner" }
+  }
+}
