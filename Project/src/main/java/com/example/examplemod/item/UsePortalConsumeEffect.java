@@ -1,21 +1,5 @@
 package com.example.examplemod.item;
 
-<<<<<<< Updated upstream
-import javax.annotation.Nullable;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.consume_effects.ConsumeEffect;
-import net.minecraft.world.level.portal.PortalForcer;
-import net.minecraft.world.level.block.Portal;
-import net.minecraft.world.level.portal.TeleportTransition;
-/*
-public record UsePortalConsumeEffect(ResourceKey<Level> level) implements ConsumeEffect, Portal {    
-=======
 import java.util.Set;
 
 import javax.annotation.Nullable;
@@ -63,7 +47,6 @@ public record UsePortalConsumeEffect(float diameter)
         this(8.0f);
     }
 
->>>>>>> Stashed changes
     @Override
     public boolean apply(Level level, ItemStack stack, LivingEntity entity) {
         if (entity.canUsePortal(false)) {
@@ -80,22 +63,13 @@ public record UsePortalConsumeEffect(float diameter)
     @Override
     public ConsumeEffect.Type<? extends ConsumeEffect> getType() {
         // Set to registered object
-<<<<<<< Updated upstream
-        return USE_PORTAL.get();
-=======
         return cs124uiuc.USE_PORTAL.get();
->>>>>>> Stashed changes
     }
 
     @Override
     @Nullable
     public TeleportTransition getPortalDestination(ServerLevel level, Entity entity, BlockPos pos) {
         // Set teleport location
-<<<<<<< Updated upstream
-    }
-}
-    */
-=======
         return TeleportTransition.createDefault((ServerPlayer) entity, TeleportTransition.PLAY_PORTAL_SOUND.then((p_351967_) -> p_351967_.placePortalTicket(pos)));
     }
 
@@ -103,4 +77,3 @@ public record UsePortalConsumeEffect(float diameter)
         STREAM_CODEC = StreamCodec.composite(ByteBufCodecs.FLOAT, UsePortalConsumeEffect::diameter, UsePortalConsumeEffect::new);
     }
 }
->>>>>>> Stashed changes

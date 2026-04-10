@@ -1,27 +1,20 @@
 package com.example.examplemod.item;
 
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
-<<<<<<< Updated upstream
 import net.minecraft.world.item.Item;
-=======
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
->>>>>>> Stashed changes
 import net.minecraft.world.item.ItemUseAnimation;
 import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.item.component.Consumable;
 import net.minecraft.world.item.consume_effects.ApplyStatusEffectsConsumeEffect;
-<<<<<<< Updated upstream
-=======
 import net.minecraft.world.item.consume_effects.ConsumeEffect;
->>>>>>> Stashed changes
 import net.minecraft.world.item.consume_effects.TeleportRandomlyConsumeEffect;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.item.PotionItem;
@@ -30,12 +23,9 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.minecraft.core.component.DataComponents;
-<<<<<<< Updated upstream
-=======
 
 import javax.annotation.Nonnull;
 
->>>>>>> Stashed changes
 import com.example.examplemod.entity.ModEntities;
 import com.example.examplemod.sound.ModSounds;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -61,19 +51,11 @@ public class ModItems {
             props -> props.component(
                 DataComponents.CONSUMABLE,
                 Consumable.builder()
-<<<<<<< Updated upstream
-                    .consumeSeconds(4f)
-                    .animation(ItemUseAnimation.EAT)
-                    .hasConsumeParticles(true)
-                    .onConsume( 
-                        new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.INSTANT_DAMAGE, 60000, 0), 0.3F)
-=======
                     .consumeSeconds(2f)
                     .animation(ItemUseAnimation.EAT)
                     .hasConsumeParticles(false)
                     .onConsume( 
                         new UsePortalConsumeEffect(Level.OVERWORLD)
->>>>>>> Stashed changes
                     )
                     .build()
             )
