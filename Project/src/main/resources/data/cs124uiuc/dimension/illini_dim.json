@@ -1,0 +1,11 @@
+{
+    "type": "cs124uiuc:illini_dim",
+    "generator": {
+        "type": "minecraft:noise",
+        "settings": "minecraft:overworld",
+        "biome_source": {
+            "type": "minecraft:fixed",
+            "biome": "cs124uiuc:illini_biome"
+        }
+    }
+}

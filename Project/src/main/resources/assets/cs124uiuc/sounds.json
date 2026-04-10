@@ -1,0 +1,27 @@
+{
+  "mob.goose.honk": {
+    "subtitle": "sounds.cs124uiuc.honk",
+    "sounds": [
+      "cs124uiuc:honk",
+	  "cs124uiuc:honk_angry"
+    ]
+  },
+  "mob.goose.honk_angry": {
+    "subtitle": "sounds.cs124uiuc.honk_angry",
+    "sounds": [
+      "cs124uiuc:honk_angry"
+    ]
+  },
+  "mob.goose.goose_hurt": {
+    "subtitle": "sounds.cs124uiuc.goose_hurt",
+    "sounds": [
+      "cs124uiuc:goose_hurt"
+    ]
+  },
+  "mob.goose.goose_die": {
+    "subtitle": "sounds.cs124uiuc.goose_die",
+    "sounds": [
+      "cs124uiuc:goose_hurt"
+    ]
+  }
+}
