@@ -133,6 +133,12 @@
                 "maxCount": 3,
                 "minCount": 1,
                 "weight": 1
+            },
+            {
+                "type": "cs124uiuc:claude_enemy",
+                "maxCount": 1,
+                "minCount": 1,
+                "weight": 5
             }
         ],
         "misc": [],
@@ -184,6 +190,12 @@
                 "maxCount": 1,
                 "minCount": 1,
                 "weight": 5
+            },
+            {
+                "type": "cs124uiuc:claude_enemy",
+                "maxCount": 1,
+                "minCount": 1,
+                "weight": 150
             }
         ],
         "underground_water_creature": [

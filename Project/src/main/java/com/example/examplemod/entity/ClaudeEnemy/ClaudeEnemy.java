@@ -71,6 +71,14 @@ public class ClaudeEnemy extends Monster {
                 entity.getEntityData().set(isIdleDataAccessor, true);
                 entity.getEntityData().set(idleTimer, 60);
             }
+
+            @Override
+            public void stop() {
+                super.stop();
+                // System.out.println("stopped");
+                entity.getEntityData().set(isIdleDataAccessor, false);
+                entity.getEntityData().set(idleTimer, 0);
+            }
         });
         super.registerGoals();
     }
@@ -102,7 +110,7 @@ public class ClaudeEnemy extends Monster {
         if (this.getEntityData().get(idleTimer) > 0) {
             this.getEntityData().set(idleTimer, this.getEntityData().get(idleTimer) - 1);
         } else {
-            this.getEntityData().set(isIdleDataAccessor, false);
+            this.getEntityData().set(idleTimer, 60);
         }
     }
 
