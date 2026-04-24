@@ -36,6 +36,9 @@ public class ModItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems("cs124uiuc");
     public static final DeferredHolder<Item, SpawnEggItem> GOOSE_SPAWN_EGG;
     public static final DeferredItem<Item> GOLDEN_EGG;
+    public static final DeferredItem<Item> RAW_BISMUTH = ITEMS.registerSimpleItem("raw_bismuth");
+    public static final DeferredItem<Item> BISMUTH = ITEMS.registerSimpleItem("bismuth");
+    public static final DeferredItem<Item> CHISEL = ITEMS.registerSimpleItem("chisel");
 
     public ModItems() {
     }
@@ -45,20 +48,20 @@ public class ModItems {
     }
 
     static {
-        GOOSE_SPAWN_EGG = ITEMS.register("goose_spawn_egg", () -> new SpawnEggItem((new Item.Properties()).spawnEgg((EntityType)ModEntities.GOOSE.get()).setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("cs124uiuc", "goose_spawn_egg")))));
+        GOOSE_SPAWN_EGG = ITEMS.register("goose_spawn_egg",
+                () -> new SpawnEggItem((new Item.Properties()).spawnEgg((EntityType) ModEntities.GOOSE.get())
+                        .setId(ResourceKey.create(Registries.ITEM,
+                                ResourceLocation.fromNamespaceAndPath("cs124uiuc", "goose_spawn_egg")))));
         GOLDEN_EGG = ITEMS.registerSimpleItem(
-            "golden_egg", 
-            props -> props.component(
-                DataComponents.CONSUMABLE,
-                Consumable.builder()
-                    .consumeSeconds(2f)
-                    .animation(ItemUseAnimation.EAT)
-                    .hasConsumeParticles(false)
-                    .onConsume( 
-                        new UsePortalConsumeEffect(Level.OVERWORLD)
-                    )
-                    .build()
-            )
-        );
+                "golden_egg",
+                props -> props.component(
+                        DataComponents.CONSUMABLE,
+                        Consumable.builder()
+                                .consumeSeconds(2f)
+                                .animation(ItemUseAnimation.EAT)
+                                .hasConsumeParticles(false)
+                                .onConsume(
+                                        new UsePortalConsumeEffect())
+                                .build()));
     }
 }

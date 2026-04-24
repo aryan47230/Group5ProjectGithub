@@ -169,6 +169,8 @@ public class cs124uiuc {
 
                 ENTITIES.register(modEventBus);
 
+                NeoForge.EVENT_BUS.register(new WindHandler());
+
         }
 
         private void commonSetup(FMLCommonSetupEvent event) {
