@@ -114,13 +114,8 @@ public class GooseEntity extends Monster {
             Vec3 vel = this.getDeltaMovement();
             if (Math.abs(vel.x()) + Math.abs(vel.y()) + Math.abs(vel.z()) > (double)0.1F) {
                 this.sitting.stop();
-<<<<<<< Updated upstream
-                this.attacking.stop();
-                this.walking.start(this.tickCount);
-=======
                 this.walking.stop();
                 this.attacking.start(this.tickCount);
->>>>>>> Stashed changes
             } else {
                 this.walking.stop();
                 this.attacking.stop();
@@ -132,15 +127,9 @@ public class GooseEntity extends Monster {
 
     public void handleEntityEvent(byte p_397414_) {
         if (p_397414_ == 4 && this.animationEnded(this.attacking, 0.9F)) {
-<<<<<<< Updated upstream
-            this.walking.stop();
-            this.sitting.stop();
-            this.attacking.start(this.tickCount);
-=======
             this.attacking.stop();
             this.sitting.stop();
             this.walking.start(this.tickCount);
->>>>>>> Stashed changes
         }
 
     }
