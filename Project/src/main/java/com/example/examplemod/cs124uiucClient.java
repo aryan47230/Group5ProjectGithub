@@ -75,8 +75,6 @@ public class cs124uiucClient {
                 ClaudeEnemy.createAttributes()
                         .build());
     }
-<<<<<<< HEAD
-=======
 
     @SubscribeEvent
     public static void registerSpawnPlacements(RegisterSpawnPlacementsEvent event) {
@@ -87,6 +85,4 @@ public class cs124uiucClient {
                 (entityType, level, spawnType, pos, random) -> true,
                 RegisterSpawnPlacementsEvent.Operation.REPLACE);
     }
-
->>>>>>> 2dc34a8a6147e93152feedb6d8c8ea467751f183
 }
