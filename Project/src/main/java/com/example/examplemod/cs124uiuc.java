@@ -8,13 +8,17 @@ import com.example.examplemod.entity.client.GooseRenderer;
 import com.example.examplemod.entity.custom.GooseEntity;
 import com.example.examplemod.item.ModItems;
 import com.example.examplemod.item.UsePortalConsumeEffect;
-//import com.example.examplemod.item.UsePortalConsumeEffect;
 import com.example.examplemod.sound.ModSounds;
+import com.example.examplemod.block.ModBlocks;
+import com.example.examplemod.item.ModCreativeModeTabs;
+import com.example.examplemod.block.entity.ModBlockEntities;
+import com.example.examplemod.dimension.ModDimensions;
+import com.example.examplemod.entity.ClaudeEnemy.ClaudeEnemy;
 import com.mojang.logging.LogUtils;
 import java.util.function.Supplier;
 
-import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -22,6 +26,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.ExtraCodecs;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
@@ -50,10 +55,6 @@ import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
-import com.example.examplemod.dimension.ModDimensions;
-import com.example.examplemod.entity.ClaudeEnemy.ClaudeEnemy;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.MobCategory;
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(cs124uiuc.MODID)
@@ -66,29 +67,25 @@ public class cs124uiuc {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(MODID);
     // Create a Deferred Register to hold CreativeModeTabs which will all be registered under the "cs124uiuc" namespace
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MODID);
-    //public static final DeferredRegister<ConsumeEffect.Type<?>> CONSUME_EFFECT_TYPES;
+    // Consume effect types for portal usage
     public static final DeferredRegister<ConsumeEffect.Type<?>> CONSUME_EFFECT_TYPES = DeferredRegister.create(Registries.CONSUME_EFFECT_TYPE, MODID);
     public static final Supplier<ConsumeEffect.Type<UsePortalConsumeEffect>> USE_PORTAL = CONSUME_EFFECT_TYPES.register("use_portal", () -> new ConsumeEffect.Type<>(UsePortalConsumeEffect.CODEC, UsePortalConsumeEffect.STREAM_CODEC));
-    
-	public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(Registries.ENTITY_TYPE,
-                        MODID);
-        public static final Supplier<EntityType<ClaudeEnemy>> CLAUDE_ENEMY = ENTITIES.register("claude_enemy",
-                        () -> EntityType.Builder.of(ClaudeEnemy::new, MobCategory.MONSTER)
-                                        .sized(0.6f, 1.8f) // Hitbox size
-                                        .build(ResourceKey.create(
-                                                        Registries.ENTITY_TYPE,
-                                                        ResourceLocation.fromNamespaceAndPath(MODID, "claude_enemy"))));
 
-    public static final ModelLayerLocation CLAUDE_ENEMY_LAYER = new ModelLayerLocation(
-                ResourceLocation.fromNamespaceAndPath(MODID, "claude_enemy"), "main");
-    
+    // Entity registration
+    public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(Registries.ENTITY_TYPE, MODID);
+    public static final Supplier<EntityType<ClaudeEnemy>> CLAUDE_ENEMY = ENTITIES.register("claude_enemy",
+            () -> EntityType.Builder.of(ClaudeEnemy::new, MobCategory.MONSTER)
+                    .sized(0.6f, 1.8f) // Hitbox size
+                    .build(ResourceKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath(MODID, "claude_enemy"))));
+
+    public static final ModelLayerLocation CLAUDE_ENEMY_LAYER = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(MODID, "claude_enemy"), "main");
 
     // Creates a new Block with the id "cs124uiuc:example_block", combining the namespace and path
     public static final DeferredBlock<Block> EXAMPLE_BLOCK = BLOCKS.registerSimpleBlock("example_block", p -> p.mapColor(MapColor.STONE));
     // Creates a new BlockItem with the id "cs124uiuc:example_block", combining the namespace and path
     public static final DeferredItem<BlockItem> EXAMPLE_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("example_block", EXAMPLE_BLOCK);
 
-    //Creates a new food item with the id "cs124uiuc:example_id", nutrition 1 and saturation 2
+    // Creates a new food item with the id "cs124uiuc:example_id", nutrition 1 and saturation 2
     public static final DeferredItem<Item> EXAMPLE_ITEM = ITEMS.registerSimpleItem("example_item", p -> p.food(new FoodProperties.Builder()
             .alwaysEdible().nutrition(1).saturationModifier(2f).build()));
 
@@ -116,15 +113,18 @@ public class cs124uiuc {
         // Note that this is necessary if and only if we want *this* class (cs124uiuc) to respond directly to events.
         // Do not add this line if there are no @SubscribeEvent-annotated functions in this class, like onServerStarting() below.
         //NeoForge.EVENT_BUS.register(this);
-        
+
         ModItems.register(modEventBus);
+        ModBlocks.register(modEventBus);
+        ModCreativeModeTabs.register(modEventBus);
+        ModBlockEntities.register(modEventBus);
         ModEntities.register(modEventBus);
         ModSounds.register(modEventBus);
 
-		ModDimensions.register();
+        ModDimensions.register();
 
-		// Register wind event system
-		NeoForge.EVENT_BUS.register(new WindEventHandler());
+        // Register wind event system
+        NeoForge.EVENT_BUS.register(new WindEventHandler());
 
         ENTITIES.register(modEventBus);
 
@@ -153,7 +153,7 @@ public class cs124uiuc {
         if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
             event.accept(EXAMPLE_BLOCK_ITEM);
         } else if (event.getTabKey() == CreativeModeTabs.SPAWN_EGGS) {
-            event.accept((ItemLike)ModItems.GOOSE_SPAWN_EGG.get());
+            event.accept((ItemLike) ModItems.GOOSE_SPAWN_EGG.get());
         }
     }
 
@@ -176,7 +176,7 @@ public class cs124uiuc {
             EntityRenderers.register(ModEntities.GOOSE.get(), GooseRenderer::new);
         }
     }
-    
+
     @SubscribeEvent
     public static void registerEntityRenderer(EntityRenderersEvent.RegisterRenderers event) {
         event.registerEntityRenderer((EntityType)GooseEntity, (m) -> new GooseRenderer(m));
@@ -186,5 +186,5 @@ public class cs124uiuc {
     public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(GooseModel.LAYER_LOCATION, GooseModel::createBodyLayer);
     }
-        */
+    */
 }

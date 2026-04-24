@@ -12,13 +12,13 @@
       "projectName": "Project",
       "mainClass": "net.neoforged.devlaunch.Main",
       "args": [
-        "@C:\\Users\\mouse\\Desktop\\CBT\\Git\\AtlasMergeBranch\\Project\\build\\moddev\\clientRunProgramArgs.txt"
+        "@/Users/brysonkageler/Documents/GitHub/Group5ProjectGithub/Project/build/moddev/clientRunProgramArgs.txt"
       ],
       "vmArgs": [
-        "@C:\\Users\\mouse\\Desktop\\CBT\\Git\\AtlasMergeBranch\\Project\\build\\moddev\\clientRunVmArgs.txt",
-        "-Dfml.modFolders\u003dcs124uiuc%%C:\\Users\\mouse\\Desktop\\CBT\\Git\\AtlasMergeBranch\\Project\\bin\\main"
+        "@/Users/brysonkageler/Documents/GitHub/Group5ProjectGithub/Project/build/moddev/clientRunVmArgs.txt",
+        "-Dfml.modFolders\u003dcs124uiuc%%/Users/brysonkageler/Documents/GitHub/Group5ProjectGithub/Project/bin/main"
       ],
-      "cwd": "${workspaceFolder}\\run",
+      "cwd": "${workspaceFolder}/run",
       "env": {},
       "console": "internalConsole",
       "shortenCommandLine": "none"
@@ -34,13 +34,13 @@
       "projectName": "Project",
       "mainClass": "net.neoforged.devlaunch.Main",
       "args": [
-        "@C:\\Users\\mouse\\Desktop\\CBT\\Git\\AtlasMergeBranch\\Project\\build\\moddev\\dataRunProgramArgs.txt"
+        "@/Users/brysonkageler/Documents/GitHub/Group5ProjectGithub/Project/build/moddev/dataRunProgramArgs.txt"
       ],
       "vmArgs": [
-        "@C:\\Users\\mouse\\Desktop\\CBT\\Git\\AtlasMergeBranch\\Project\\build\\moddev\\dataRunVmArgs.txt",
-        "-Dfml.modFolders\u003dcs124uiuc%%C:\\Users\\mouse\\Desktop\\CBT\\Git\\AtlasMergeBranch\\Project\\bin\\main"
+        "@/Users/brysonkageler/Documents/GitHub/Group5ProjectGithub/Project/build/moddev/dataRunVmArgs.txt",
+        "-Dfml.modFolders\u003dcs124uiuc%%/Users/brysonkageler/Documents/GitHub/Group5ProjectGithub/Project/bin/main"
       ],
-      "cwd": "${workspaceFolder}\\run",
+      "cwd": "${workspaceFolder}/run",
       "env": {},
       "console": "internalConsole",
       "shortenCommandLine": "none"
@@ -56,13 +56,13 @@
       "projectName": "Project",
       "mainClass": "net.neoforged.devlaunch.Main",
       "args": [
-        "@C:\\Users\\mouse\\Desktop\\CBT\\Git\\AtlasMergeBranch\\Project\\build\\moddev\\gameTestServerRunProgramArgs.txt"
+        "@/Users/brysonkageler/Documents/GitHub/Group5ProjectGithub/Project/build/moddev/gameTestServerRunProgramArgs.txt"
       ],
       "vmArgs": [
-        "@C:\\Users\\mouse\\Desktop\\CBT\\Git\\AtlasMergeBranch\\Project\\build\\moddev\\gameTestServerRunVmArgs.txt",
-        "-Dfml.modFolders\u003dcs124uiuc%%C:\\Users\\mouse\\Desktop\\CBT\\Git\\AtlasMergeBranch\\Project\\bin\\main"
+        "@/Users/brysonkageler/Documents/GitHub/Group5ProjectGithub/Project/build/moddev/gameTestServerRunVmArgs.txt",
+        "-Dfml.modFolders\u003dcs124uiuc%%/Users/brysonkageler/Documents/GitHub/Group5ProjectGithub/Project/bin/main"
       ],
-      "cwd": "${workspaceFolder}\\run",
+      "cwd": "${workspaceFolder}/run",
       "env": {},
       "console": "internalConsole",
       "shortenCommandLine": "none"
@@ -78,13 +78,13 @@
       "projectName": "Project",
       "mainClass": "net.neoforged.devlaunch.Main",
       "args": [
-        "@C:\\Users\\mouse\\Desktop\\CBT\\Git\\AtlasMergeBranch\\Project\\build\\moddev\\serverRunProgramArgs.txt"
+        "@/Users/brysonkageler/Documents/GitHub/Group5ProjectGithub/Project/build/moddev/serverRunProgramArgs.txt"
       ],
       "vmArgs": [
-        "@C:\\Users\\mouse\\Desktop\\CBT\\Git\\AtlasMergeBranch\\Project\\build\\moddev\\serverRunVmArgs.txt",
-        "-Dfml.modFolders\u003dcs124uiuc%%C:\\Users\\mouse\\Desktop\\CBT\\Git\\AtlasMergeBranch\\Project\\bin\\main"
+        "@/Users/brysonkageler/Documents/GitHub/Group5ProjectGithub/Project/build/moddev/serverRunVmArgs.txt",
+        "-Dfml.modFolders\u003dcs124uiuc%%/Users/brysonkageler/Documents/GitHub/Group5ProjectGithub/Project/bin/main"
       ],
-      "cwd": "${workspaceFolder}\\run",
+      "cwd": "${workspaceFolder}/run",
       "env": {},
       "console": "internalConsole",
       "shortenCommandLine": "none"

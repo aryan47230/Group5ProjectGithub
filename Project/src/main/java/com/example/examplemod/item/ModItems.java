@@ -1,14 +1,14 @@
 package com.example.examplemod.item;
 
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemUseAnimation;
 import net.minecraft.world.item.SpawnEggItem;
@@ -36,6 +36,9 @@ public class ModItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems("cs124uiuc");
     public static final DeferredHolder<Item, SpawnEggItem> GOOSE_SPAWN_EGG;
     public static final DeferredItem<Item> GOLDEN_EGG;
+    public static final DeferredItem<Item> RAW_BISMUTH = ITEMS.registerSimpleItem("raw_bismuth");
+    public static final DeferredItem<Item> BISMUTH = ITEMS.registerSimpleItem("bismuth");
+    public static final DeferredItem<Item> CHISEL = ITEMS.registerSimpleItem("chisel");
 
     public ModItems() {
     }
@@ -45,22 +48,20 @@ public class ModItems {
     }
 
     static {
-        GOOSE_SPAWN_EGG = ITEMS.register("goose_spawn_egg", () -> new SpawnEggItem((new Item.Properties()).spawnEgg((EntityType)ModEntities.GOOSE.get()).setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("cs124uiuc", "goose_spawn_egg")))));
+        GOOSE_SPAWN_EGG = ITEMS.register("goose_spawn_egg",
+                () -> new SpawnEggItem((new Item.Properties()).spawnEgg((EntityType) ModEntities.GOOSE.get())
+                        .setId(ResourceKey.create(Registries.ITEM,
+                                ResourceLocation.fromNamespaceAndPath("cs124uiuc", "goose_spawn_egg")))));
         GOLDEN_EGG = ITEMS.registerSimpleItem(
-            "golden_egg", 
-            props -> props.component(
-                DataComponents.CONSUMABLE,
-                Consumable.builder()
-                    .consumeSeconds(2f)
-                    .animation(ItemUseAnimation.EAT)
-                    .sound(SoundEvents.ARMOR_EQUIP_CHAIN)
-                    .soundAfterConsume(SoundEvents.ARMOR_EQUIP_CHAIN)
-                    .hasConsumeParticles(true)
-                    .onConsume( 
-                        new UsePortalConsumeEffect(0.5f)
-                    )
-                    .build()
-            )
-        );
+                "golden_egg",
+                props -> props.component(
+                        DataComponents.CONSUMABLE,
+                        Consumable.builder()
+                                .consumeSeconds(2f)
+                                .animation(ItemUseAnimation.EAT)
+                                .hasConsumeParticles(false)
+                                .onConsume(
+                                        new UsePortalConsumeEffect())
+                                .build()));
     }
 }

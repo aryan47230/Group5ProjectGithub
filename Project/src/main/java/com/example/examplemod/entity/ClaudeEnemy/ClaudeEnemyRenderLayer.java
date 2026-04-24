@@ -32,11 +32,11 @@ public class ClaudeEnemyRenderLayer extends RenderLayer<ClaudeEnemyRenderState, 
     public void submit(PoseStack poseStack, SubmitNodeCollector collector, int lightCoords,
             ClaudeEnemyRenderState renderState, float yRot, float xRot) {
         collector
-                .order(1)
+                .order(0)
                 .submitModel(this.model, renderState, poseStack,
                         RenderType.entitySolid(ResourceLocation.fromNamespaceAndPath(cs124uiuc.MODID,
                                 "textures/entity/claude_enemy/claude_enemy.png")),
-                        lightCoords, (int) yRot, (int) xRot, null);
+                        lightCoords, 0, renderState.outlineColor, null);
     }
 
 }
