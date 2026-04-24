@@ -1,0 +1,58 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " 2 ",
+        "232",
+        " 2 "
+    ],
+    "key": {
+        "#": "#minecraft:flowers",
+        "1": "minecraft:dirt",
+        "2": "minecraft:chorus_fruit",
+        "3": "minecraft:chorus_fruit"
+    },
+    "result": {
+        "id": "minecraft:command_block",
+        "count": 1,
+        "components": {
+          "minecraft:item_model": "cs124uiuc:item/golden_egg",
+          "minecraft:rarity": "epic",
+          "minecraft:max_stack_size": 16,
+          "minecraft:enchantment_glint_override": true,
+          "minecraft:consumable": {
+            "consume_seconds": 2.5,
+            "animation": "drink",
+            "sound": "entity.generic.drink",
+            "has_consume_particles": false,
+            "on_consume_effects": [
+              {
+                "type": "minecraft:play_sound",
+                "sound": "entity.enderman.teleport"
+              }
+            ]
+          },
+          "minecraft:potion_contents": {
+            "custom_color": 2090001
+          },
+          "minecraft:tooltip_display": {
+            "hidden_components": [
+              "minecraft:potion_contents"
+            ]
+          },
+          "minecraft:custom_data": {
+            "cs124uiuc.overworld": true
+          },
+          "minecraft:custom_name": {
+            "text": "Golden Egg",
+            "italic": false
+          },
+          "minecraft:lore": [
+            {
+              "text": "Drink to teleport to the Overworld",
+              "italic": false,
+              "color": "gray"
+            }
+          ]
+        }
+    }
+}
