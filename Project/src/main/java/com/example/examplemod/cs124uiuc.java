@@ -15,6 +15,9 @@ import com.example.examplemod.item.UsePortalConsumeEffect;
 import com.example.examplemod.item.UseUIUCConsumeEffect;
 //import com.example.examplemod.item.UsePortalConsumeEffect;
 import com.example.examplemod.sound.ModSounds;
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 import com.mojang.logging.LogUtils;
 
@@ -35,6 +38,9 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.monster.Monster;
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BlockItem;
@@ -60,7 +66,10 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
 import com.example.examplemod.item.ModItems;
 import com.example.examplemod.block.ModBlocks;
 import com.example.examplemod.item.ModCreativeModeTabs;
@@ -71,11 +80,15 @@ import com.example.examplemod.entity.ClaudeEnemy.ClaudeEnemy;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import java.util.function.Supplier;
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(cs124uiuc.MODID)
 public class cs124uiuc {
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
     // Define mod id in a common place for everything to reference
     public static final String MODID = "cs124uiuc";
@@ -88,6 +101,8 @@ public class cs124uiuc {
     // Create a Deferred Register to hold CreativeModeTabs which will all be registered under the "cs124uiuc" namespace
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MODID);
 =======
+=======
+>>>>>>> Stashed changes
         public static final String MODID = "cs124uiuc";
         public static final Logger LOGGER = LogUtils.getLogger();
         // Create a Deferred Register to hold Blocks which will all be registered under
@@ -106,6 +121,9 @@ public class cs124uiuc {
                         .create(Registries.CONSUME_EFFECT_TYPE, MODID);
         public static final Supplier<ConsumeEffect.Type<UsePortalConsumeEffect>> USE_PORTAL = CONSUME_EFFECT_TYPES.register("use_portal", () -> new ConsumeEffect.Type(UsePortalConsumeEffect.CODEC, UsePortalConsumeEffect.STREAM_CODEC));
         public static final Supplier<ConsumeEffect.Type<UseUIUCConsumeEffect>> USE_UIUC = CONSUME_EFFECT_TYPES.register("use_uiuc", () -> new ConsumeEffect.Type(UseUIUCConsumeEffect.CODEC, UseUIUCConsumeEffect.STREAM_CODEC));
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
         public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(Registries.ENTITY_TYPE,
@@ -116,6 +134,7 @@ public class cs124uiuc {
                                         .build(ResourceKey.create(
                                                         Registries.ENTITY_TYPE,
                                                         ResourceLocation.fromNamespaceAndPath(MODID, "claude_enemy"))));
+<<<<<<< Updated upstream
 
 <<<<<<< Updated upstream
     // Creates a new food item with the id "cs124uiuc:example_id", nutrition 1 and saturation 2
@@ -211,6 +230,77 @@ public class cs124uiuc {
 
                 ENTITIES.register(modEventBus);
 
+=======
+
+        public static final ModelLayerLocation CLAUDE_ENEMY_LAYER = new ModelLayerLocation(
+                        ResourceLocation.fromNamespaceAndPath(MODID, "claude_enemy"), "main");
+
+        // Creates a new Block with the id "cs124uiuc:example_block", combining the
+        // namespace and path
+        public static final DeferredBlock<Block> EXAMPLE_BLOCK = BLOCKS.registerSimpleBlock("example_block",
+                        p -> p.mapColor(MapColor.STONE));
+        // Creates a new BlockItem with the id "cs124uiuc:example_block", combining the
+        // namespace and path
+        public static final DeferredItem<BlockItem> EXAMPLE_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("example_block",
+                        EXAMPLE_BLOCK);
+
+        // Creates a new food item with the id "cs124uiuc:example_id", nutrition 1 and
+        // saturation 2
+        public static final DeferredItem<Item> EXAMPLE_ITEM = ITEMS.registerSimpleItem("example_item",
+                        p -> p.food(new FoodProperties.Builder()
+                                        .alwaysEdible().nutrition(1).saturationModifier(2f).build()));
+
+        // Creates a creative tab with the id "cs124uiuc:example_tab" for the example
+        // item, that is placed after the combat tab
+        public static final DeferredHolder<CreativeModeTab, CreativeModeTab> EXAMPLE_TAB = CREATIVE_MODE_TABS
+                        .register("example_tab", () -> CreativeModeTab.builder()
+                                        .title(Component.translatable("itemGroup.cs124uiuc")) // The language key for
+                                                                                              // the title of your
+                                                                                              // CreativeModeTab
+                                        .withTabsBefore(CreativeModeTabs.COMBAT)
+                                        .icon(() -> EXAMPLE_ITEM.get().getDefaultInstance())
+                                        .displayItems((parameters, output) -> {
+                                                output.accept(EXAMPLE_ITEM.get()); // Add the example item to the tab.
+                                                                                   // For your own tabs, this method is
+                                                                                   // preferred over the event
+                                        }).build());
+
+        // The constructor for the mod class is the first code that is run when your mod
+        // is loaded.
+        // FML will recognize some parameter types like IEventBus or ModContainer and
+        // pass them in automatically.
+        public cs124uiuc(IEventBus modEventBus, ModContainer modContainer) {
+                // Register the commonSetup method for modloading
+                modEventBus.addListener(this::commonSetup);
+                NeoForge.EVENT_BUS.register(this);
+                BLOCKS.register(modEventBus);
+                ITEMS.register(modEventBus);
+                CREATIVE_MODE_TABS.register(modEventBus);
+                CONSUME_EFFECT_TYPES.register(modEventBus);
+
+                // Register ourselves for server and other game events we are interested in.
+                // Note that this is necessary if and only if we want *this* class (cs124uiuc)
+                // to respond directly to events.
+                // Do not add this line if there are no @SubscribeEvent-annotated functions in
+                // this class, like onServerStarting() below.
+                // NeoForge.EVENT_BUS.register(this);
+
+                ModItems.register(modEventBus);
+                ModEntities.register(modEventBus);
+                ModSounds.register(modEventBus);
+
+                // Register the item to a creative tab
+                modEventBus.addListener(this::addCreative);
+
+                // Register our mod's ModConfigSpec so that FML can create and load the config
+                // file for us
+                modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+
+                ModDimensions.register();
+
+                ENTITIES.register(modEventBus);
+
+>>>>>>> Stashed changes
         }
 
         private void commonSetup(FMLCommonSetupEvent event) {
@@ -221,6 +311,7 @@ public class cs124uiuc {
                         LOGGER.info("DIRT BLOCK >> {}", BuiltInRegistries.BLOCK.getKey(Blocks.DIRT));
                 }
 
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
     // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
@@ -241,6 +332,13 @@ public class cs124uiuc {
         LOGGER.info("HELLO from server starting");
     }
 =======
+=======
+                LOGGER.info("{}{}", Config.MAGIC_NUMBER_INTRODUCTION.get(), Config.MAGIC_NUMBER.getAsInt());
+
+                Config.ITEM_STRINGS.get().forEach((item) -> LOGGER.info("ITEM >> {}", item));
+        }
+
+>>>>>>> Stashed changes
         // Add the example block item to the building blocks tab
         private void addCreative(BuildCreativeModeTabContentsEvent event) {
                 if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
@@ -252,6 +350,7 @@ public class cs124uiuc {
                         event.accept((ItemLike)ModItems.EVIL_EGG.get());
                 }
 
+<<<<<<< Updated upstream
         }
 
         // You can use SubscribeEvent and let the Event Bus discover methods to call
@@ -261,6 +360,17 @@ public class cs124uiuc {
                 LOGGER.info("HELLO from server starting");
         }
 
+=======
+        }
+
+        // You can use SubscribeEvent and let the Event Bus discover methods to call
+        @SubscribeEvent
+        public void onServerStarting(ServerStartingEvent event) {
+                // Do something when the server starts
+                LOGGER.info("HELLO from server starting");
+        }
+
+>>>>>>> Stashed changes
         /*
          * @EventBusSubscriber(modid = cs124uiuc.MODID, bus =
          * EventBusSubscriber.Bus.Mod, value=Dist.client)
@@ -287,5 +397,8 @@ public class cs124uiuc {
          * GooseModel::createBodyLayer);
          * }
          */
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 }
