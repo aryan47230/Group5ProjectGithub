@@ -120,8 +120,11 @@ public class cs124uiuc {
         ModItems.register(modEventBus);
         ModEntities.register(modEventBus);
         ModSounds.register(modEventBus);
-		
+
 		ModDimensions.register();
+
+		// Register wind event system
+		NeoForge.EVENT_BUS.register(new WindEventHandler());
 
         ENTITIES.register(modEventBus);
 
@@ -157,8 +160,12 @@ public class cs124uiuc {
     // You can use SubscribeEvent and let the Event Bus discover methods to call
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {
-        // Do something when the server starts
         LOGGER.info("HELLO from server starting");
+    }
+
+    @SubscribeEvent
+    public void onRegisterCommands(net.neoforged.neoforge.event.RegisterCommandsEvent event) {
+        WindCommand.register(event.getDispatcher());
     }
 
     /*
