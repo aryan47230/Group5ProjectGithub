@@ -12,6 +12,7 @@
       "projectName": "Project",
       "mainClass": "net.neoforged.devlaunch.Main",
       "args": [
+<<<<<<< HEAD
         "@C:\\Users\\Allen\\OneDrive\\Documents\\VSCode\\cs124project-template-1.21.10\\Project\\build\\moddev\\clientRunProgramArgs.txt"
       ],
       "vmArgs": [
@@ -19,6 +20,15 @@
         "-Dfml.modFolders\u003dcs124uiuc%%C:\\Users\\Allen\\OneDrive\\Documents\\VSCode\\cs124project-template-1.21.10\\Project\\bin\\main"
       ],
       "cwd": "${workspaceFolder}\\run",
+=======
+        "@/Users/haydenberens/Documents/VSCODE/Group5ProjectGithub/Project/build/moddev/clientRunProgramArgs.txt"
+      ],
+      "vmArgs": [
+        "@/Users/haydenberens/Documents/VSCODE/Group5ProjectGithub/Project/build/moddev/clientRunVmArgs.txt",
+        "-Dfml.modFolders\u003dcs124uiuc%%/Users/haydenberens/Documents/VSCODE/Group5ProjectGithub/Project/bin/main"
+      ],
+      "cwd": "${workspaceFolder}/run",
+>>>>>>> 5c315f4b7a92f0baae7100d868dff4c8972ab059
       "env": {},
       "console": "internalConsole",
       "shortenCommandLine": "none"
@@ -34,6 +44,7 @@
       "projectName": "Project",
       "mainClass": "net.neoforged.devlaunch.Main",
       "args": [
+<<<<<<< HEAD
         "@C:\\Users\\Allen\\OneDrive\\Documents\\VSCode\\cs124project-template-1.21.10\\Project\\build\\moddev\\dataRunProgramArgs.txt"
       ],
       "vmArgs": [
@@ -41,6 +52,15 @@
         "-Dfml.modFolders\u003dcs124uiuc%%C:\\Users\\Allen\\OneDrive\\Documents\\VSCode\\cs124project-template-1.21.10\\Project\\bin\\main"
       ],
       "cwd": "${workspaceFolder}\\run",
+=======
+        "@/Users/haydenberens/Documents/VSCODE/Group5ProjectGithub/Project/build/moddev/dataRunProgramArgs.txt"
+      ],
+      "vmArgs": [
+        "@/Users/haydenberens/Documents/VSCODE/Group5ProjectGithub/Project/build/moddev/dataRunVmArgs.txt",
+        "-Dfml.modFolders\u003dcs124uiuc%%/Users/haydenberens/Documents/VSCODE/Group5ProjectGithub/Project/bin/main"
+      ],
+      "cwd": "${workspaceFolder}/run",
+>>>>>>> 5c315f4b7a92f0baae7100d868dff4c8972ab059
       "env": {},
       "console": "internalConsole",
       "shortenCommandLine": "none"
@@ -56,6 +76,7 @@
       "projectName": "Project",
       "mainClass": "net.neoforged.devlaunch.Main",
       "args": [
+<<<<<<< HEAD
         "@C:\\Users\\Allen\\OneDrive\\Documents\\VSCode\\cs124project-template-1.21.10\\Project\\build\\moddev\\gameTestServerRunProgramArgs.txt"
       ],
       "vmArgs": [
@@ -63,6 +84,15 @@
         "-Dfml.modFolders\u003dcs124uiuc%%C:\\Users\\Allen\\OneDrive\\Documents\\VSCode\\cs124project-template-1.21.10\\Project\\bin\\main"
       ],
       "cwd": "${workspaceFolder}\\run",
+=======
+        "@/Users/haydenberens/Documents/VSCODE/Group5ProjectGithub/Project/build/moddev/gameTestServerRunProgramArgs.txt"
+      ],
+      "vmArgs": [
+        "@/Users/haydenberens/Documents/VSCODE/Group5ProjectGithub/Project/build/moddev/gameTestServerRunVmArgs.txt",
+        "-Dfml.modFolders\u003dcs124uiuc%%/Users/haydenberens/Documents/VSCODE/Group5ProjectGithub/Project/bin/main"
+      ],
+      "cwd": "${workspaceFolder}/run",
+>>>>>>> 5c315f4b7a92f0baae7100d868dff4c8972ab059
       "env": {},
       "console": "internalConsole",
       "shortenCommandLine": "none"
@@ -78,6 +108,7 @@
       "projectName": "Project",
       "mainClass": "net.neoforged.devlaunch.Main",
       "args": [
+<<<<<<< HEAD
         "@C:\\Users\\Allen\\OneDrive\\Documents\\VSCode\\cs124project-template-1.21.10\\Project\\build\\moddev\\serverRunProgramArgs.txt"
       ],
       "vmArgs": [
@@ -85,6 +116,15 @@
         "-Dfml.modFolders\u003dcs124uiuc%%C:\\Users\\Allen\\OneDrive\\Documents\\VSCode\\cs124project-template-1.21.10\\Project\\bin\\main"
       ],
       "cwd": "${workspaceFolder}\\run",
+=======
+        "@/Users/haydenberens/Documents/VSCODE/Group5ProjectGithub/Project/build/moddev/serverRunProgramArgs.txt"
+      ],
+      "vmArgs": [
+        "@/Users/haydenberens/Documents/VSCODE/Group5ProjectGithub/Project/build/moddev/serverRunVmArgs.txt",
+        "-Dfml.modFolders\u003dcs124uiuc%%/Users/haydenberens/Documents/VSCODE/Group5ProjectGithub/Project/bin/main"
+      ],
+      "cwd": "${workspaceFolder}/run",
+>>>>>>> 5c315f4b7a92f0baae7100d868dff4c8972ab059
       "env": {},
       "console": "internalConsole",
       "shortenCommandLine": "none"
