@@ -1,5 +1,8 @@
 package com.example.examplemod.item;
 
+import com.example.examplemod.entity.ModEntities;
+import com.example.examplemod.item.custom.ChiselItem;
+
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
@@ -16,8 +19,6 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
-import com.example.examplemod.entity.ModEntities;
-import com.example.examplemod.item.custom.ChiselItem;
 
 public class ModItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems("cs124uiuc");
