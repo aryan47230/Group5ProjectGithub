@@ -4,6 +4,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.client.telemetry.TelemetryProperty.GameMode;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ClientboundSetEntityMotionPacket;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -19,8 +20,11 @@ public class WindHandler {
     @SubscribeEvent
     public void onPlayerTick(PlayerTickEvent.Post event) {
         Player player = event.getEntity();
-        if (!(player instanceof ServerPlayer serverPlayer)) return;
-
+        if (!(player instanceof ServerPlayer serverPlayer))
+            return;
+        if (!player.gameMode().isSurvival()) {
+            return;
+        }
         tickCounter++;
         shiftTimer++;
 
@@ -30,7 +34,8 @@ public class WindHandler {
             windZ = (Math.random() - 0.5) * 1.0;
         }
 
-        if (tickCounter < 10) return;
+        if (tickCounter < 10)
+            return;
         tickCounter = 0;
 
         double roll = Math.random();
@@ -56,8 +61,7 @@ public class WindHandler {
         player.hurtMarked = false;
         sendVelocity(player);
         player.displayClientMessage(
-            Component.literal("§e⚠ §bPlayer is being pushed by UIUC winds!"), true
-        );
+                Component.literal("§e⚠ §bPlayer is being pushed by UIUC winds!"), true);
     }
 
     private void strongGust(ServerPlayer player) {
@@ -67,15 +71,13 @@ public class WindHandler {
         player.addEffect(new MobEffectInstance(MobEffects.DARKNESS, 20, 0, false, true));
         player.hurt(player.damageSources().fall(), 1.0f);
         player.push(
-            windX * 1.0 + (Math.random() - 0.5) * 0.5,
-            0.3,
-            windZ * 1.0 + (Math.random() - 0.5) * 0.5
-        );
+                windX * 1.0 + (Math.random() - 0.5) * 0.5,
+                0.3,
+                windZ * 1.0 + (Math.random() - 0.5) * 0.5);
         player.hurtMarked = false;
         sendVelocity(player);
         player.displayClientMessage(
-            Component.literal("§c💨 §lPlayer is getting BLOWN AWAY by the wind!"), true
-        );
+                Component.literal("§c💨 §lPlayer is getting BLOWN AWAY by the wind!"), true);
     }
 
     private void violentGust(ServerPlayer player) {
@@ -87,14 +89,12 @@ public class WindHandler {
         player.hurt(player.damageSources().fall(), 1.5f);
         player.hurt(player.damageSources().fall(), 1.5f);
         player.push(
-            (Math.random() - 0.5) * 3.0,
-            0.8,
-            (Math.random() - 0.5) * 3.0
-        );
+                (Math.random() - 0.5) * 3.0,
+                0.8,
+                (Math.random() - 0.5) * 3.0);
         player.hurtMarked = false;
         sendVelocity(player);
         player.displayClientMessage(
-            Component.literal("§4§l🌪 THE WIND LAUNCHES THE PLAYER INTO THE AIR!!"), true
-        );
+                Component.literal("§4§l🌪 THE WIND LAUNCHES THE PLAYER INTO THE AIR!!"), true);
     }
 }
