@@ -7,6 +7,9 @@ import com.example.examplemod.item.ModItems;
 import com.example.examplemod.item.UsePortalConsumeEffect;
 import com.example.examplemod.screen.ModMenuTypes;
 import com.example.examplemod.sound.ModSounds;
+import com.example.examplemod.WindCommand;
+import com.example.examplemod.WindEventHandler;
+
 import com.mojang.logging.LogUtils;
 import java.util.function.Supplier;
 
@@ -110,7 +113,7 @@ public class cs124uiuc {
                 modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
                 ModDimensions.register();
                 ENTITIES.register(modEventBus);
-                NeoForge.EVENT_BUS.register(new WindHandler());
+                NeoForge.EVENT_BUS.register(new WindEventHandler());
         }
 
         private void commonSetup(FMLCommonSetupEvent event) {
@@ -136,5 +139,10 @@ public class cs124uiuc {
         @SubscribeEvent
         public void onServerStarting(ServerStartingEvent event) {
                 LOGGER.info("HELLO from server starting");
+        }
+
+        @SubscribeEvent
+        public void onRegisterCommands(net.neoforged.neoforge.event.RegisterCommandsEvent event) {
+                WindCommand.register(event.getDispatcher());
         }
 }
