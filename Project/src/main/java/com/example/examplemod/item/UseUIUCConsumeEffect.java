@@ -45,7 +45,7 @@ public record UseUIUCConsumeEffect(float diameter) implements ConsumeEffect, Por
 
     @Nullable
     public TeleportTransition getPortalDestination(ServerLevel level, Entity entity, BlockPos pos) {
-        return new TeleportTransition(level.getServer().getLevel(ModDimensions.ILLINI_DIM_KEY), new Vec3((double)0.0F, (double)120.0F, (double)0.0F), new Vec3((double)0.0F, (double)50.0F, (double)0.0F), 0.0F, 0.0F, TeleportTransition.PLAY_PORTAL_SOUND.then((p_351967_) -> p_351967_.placePortalTicket(pos)));
+        return new TeleportTransition(level.getServer().getLevel(ModDimensions.ILLINI_DIM_KEY), new Vec3((double)0.0F, (double)120.0F, (double)0.0F), new Vec3((double)0.0F, (double)0.0F, (double)0.0F), 0.0F, 0.0F, TeleportTransition.PLAY_PORTAL_SOUND.then((p_351967_) -> p_351967_.placePortalTicket(pos)));
     }
 
     static {

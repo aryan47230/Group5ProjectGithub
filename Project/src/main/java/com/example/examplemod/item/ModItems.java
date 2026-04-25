@@ -49,6 +49,9 @@ public class ModItems {
     static {
         GOOSE_SPAWN_EGG = ITEMS.register("goose_spawn_egg", () -> new SpawnEggItem((new Item.Properties()).spawnEgg((EntityType)ModEntities.GOOSE.get()).setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("cs124uiuc", "goose_spawn_egg")))));
         GOLDEN_EGG = ITEMS.registerSimpleItem("golden_egg", (props) -> props.component(DataComponents.CONSUMABLE, Consumable.builder().consumeSeconds(2.0F).animation(ItemUseAnimation.EAT).sound(SoundEvents.ARMOR_EQUIP_CHAIN).soundAfterConsume(SoundEvents.ARMOR_EQUIP_CHAIN).hasConsumeParticles(true).onConsume(new UsePortalConsumeEffect(0.5F)).build()));
-        EVIL_EGG = ITEMS.registerSimpleItem("evil_egg", (props) -> props.component(DataComponents.CONSUMABLE, Consumable.builder().consumeSeconds(2.0F).animation(ItemUseAnimation.EAT).sound(SoundEvents.ARMOR_EQUIP_CHAIN).soundAfterConsume(SoundEvents.ARMOR_EQUIP_CHAIN).hasConsumeParticles(true).onConsume(new UseUIUCConsumeEffect(-0.5F)).build()));
+        EVIL_EGG = ITEMS.registerSimpleItem("evil_egg", (props) -> props.component(DataComponents.CONSUMABLE, Consumable.builder().consumeSeconds(2.0F).animation(ItemUseAnimation.EAT).sound(SoundEvents.ARMOR_EQUIP_CHAIN).soundAfterConsume(SoundEvents.ARMOR_EQUIP_CHAIN).hasConsumeParticles(true).onConsume(
+                // When finished consuming, applies the effects with a 30% chance
+                new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.SLOW_FALLING, 600, 0), 1.0F)
+            ).onConsume(new UseUIUCConsumeEffect(-0.5F)).build()));
     }
 }
