@@ -162,11 +162,19 @@ public class cs124uiuc {
                 // NeoForge.EVENT_BUS.register(new WindHandler());
                 NeoForge.EVENT_BUS.register(new WindEventHandler());
         }
+        
+        private void commonSetup(FMLCommonSetupEvent event) {
+                // Some common setup code
+                LOGGER.info("HELLO FROM COMMON SETUP");
 
-        LOGGER.info("{}{}", Config.MAGIC_NUMBER_INTRODUCTION.get(), Config.MAGIC_NUMBER.getAsInt());
+                if (Config.LOG_DIRT_BLOCK.getAsBoolean()) {
+                        LOGGER.info("DIRT BLOCK >> {}", BuiltInRegistries.BLOCK.getKey(Blocks.DIRT));
+                }
 
-        Config.ITEM_STRINGS.get().forEach((item) -> LOGGER.info("ITEM >> {}", item));
-    }
+                LOGGER.info("{}{}", Config.MAGIC_NUMBER_INTRODUCTION.get(), Config.MAGIC_NUMBER.getAsInt());
+
+                Config.ITEM_STRINGS.get().forEach((item) -> LOGGER.info("ITEM >> {}", item));
+        }
 
     // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
