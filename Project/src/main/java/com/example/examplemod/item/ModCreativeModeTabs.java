@@ -15,6 +15,7 @@ public class ModCreativeModeTabs {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TAB = 
             DeferredRegister.create(Registries.CREATIVE_MODE_TAB, "cs124uiuc");
 
+                /*
     public static final Supplier<CreativeModeTab> BISMUTH_ITEMS_TAB = CREATIVE_MODE_TAB.register("bismuth_items_tab", 
             () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.BISMUTH.get()))
                     .title(Component.translatable("creativetab.cs124uiuc.bismuth_items"))
@@ -23,6 +24,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.RAW_BISMUTH.get());
                         output.accept(ModItems.CHISEL.get());
                     }).build());
+                    */
 
      public static final Supplier<CreativeModeTab> BISMUTH_BLOCK_TAB = CREATIVE_MODE_TAB.register("bismuth_blocks_tab", 
             () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModBlocks.BISMUTH_BLOCK.get()))

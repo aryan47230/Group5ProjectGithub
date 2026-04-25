@@ -36,16 +36,11 @@ import net.minecraft.world.item.consume_effects.ConsumeEffect.Type;
 import net.minecraft.world.item.consume_effects.TeleportRandomlyConsumeEffect;
 
 import com.example.examplemod.cs124uiuc;
-import com.example.examplemod.dimension.ModDimensions;
 
 public record UsePortalConsumeEffect(float diameter)
-        implements ConsumeEffect, Portal {
+    implements ConsumeEffect, Portal {
 
-    public static final MapCodec<UsePortalConsumeEffect> CODEC = RecordCodecBuilder
-            .mapCodec((p_366612_) -> p_366612_
-                    .group(ExtraCodecs.POSITIVE_FLOAT.optionalFieldOf("diameter", 16.0F)
-                            .forGetter(UsePortalConsumeEffect::diameter))
-                    .apply(p_366612_, UsePortalConsumeEffect::new));
+    public static final MapCodec<UsePortalConsumeEffect> CODEC = RecordCodecBuilder.mapCodec((p_366612_) -> p_366612_.group(ExtraCodecs.POSITIVE_FLOAT.optionalFieldOf("diameter", 16.0F).forGetter(UsePortalConsumeEffect::diameter)).apply(p_366612_, UsePortalConsumeEffect::new));
     public static final StreamCodec<RegistryFriendlyByteBuf, UsePortalConsumeEffect> STREAM_CODEC;
 
     public UsePortalConsumeEffect() {
@@ -75,15 +70,10 @@ public record UsePortalConsumeEffect(float diameter)
     @Nullable
     public TeleportTransition getPortalDestination(ServerLevel level, Entity entity, BlockPos pos) {
         // Set teleport location
-        if (entity.level().dimension().equals(ModDimensions.ILLINI_DIM_KEY)) {
-
-        }
-        return TeleportTransition.createDefault((ServerPlayer) entity,
-                TeleportTransition.PLAY_PORTAL_SOUND.then((p_351967_) -> p_351967_.placePortalTicket(pos)));
+        return TeleportTransition.createDefault((ServerPlayer) entity, TeleportTransition.PLAY_PORTAL_SOUND.then((p_351967_) -> p_351967_.placePortalTicket(pos)));
     }
 
     static {
-        STREAM_CODEC = StreamCodec.composite(ByteBufCodecs.FLOAT, UsePortalConsumeEffect::diameter,
-                UsePortalConsumeEffect::new);
+        STREAM_CODEC = StreamCodec.composite(ByteBufCodecs.FLOAT, UsePortalConsumeEffect::diameter, UsePortalConsumeEffect::new);
     }
 }
