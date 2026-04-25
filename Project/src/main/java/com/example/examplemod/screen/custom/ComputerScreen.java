@@ -1,13 +1,15 @@
 package com.example.examplemod.screen.custom;
 
-import com.mojang.blaze3d.systems.RenderSystem;
+import com.example.examplemod.block.custom.AnswerPacket;
+import com.example.examplemod.block.custom.QuestionBank;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
-import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
-import com.example.examplemod.screen.custom.ComputerMenu;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
+import net.neoforged.neoforge.client.network.ClientPacketDistributor;
 
 @OnlyIn(Dist.CLIENT)
 public class ComputerScreen extends AbstractContainerScreen<ComputerMenu> {
@@ -38,7 +40,6 @@ public class ComputerScreen extends AbstractContainerScreen<ComputerMenu> {
         int x = leftPos;
         int y = topPos;
 
-        // Add a button per choice
         for (int i = 0; i < currentQuestion.choices().length; i++) {
             final int idx = i;
             addRenderableWidget(Button.builder(
@@ -52,8 +53,7 @@ public class ComputerScreen extends AbstractContainerScreen<ComputerMenu> {
         if (idx == currentCorrectIndex) {
             feedback = "Correct! Item awarded.";
             feedbackColor = 0x55FF55;
-            // Send packet to server
-            PacketHandler.CHANNEL.sendToServer(new AnswerPacket(idx));
+            ClientPacketDistributor.sendToServer(new AnswerPacket(idx));
         } else {
             feedback = "Wrong! Try again.";
             feedbackColor = 0xFF5555;
@@ -62,9 +62,7 @@ public class ComputerScreen extends AbstractContainerScreen<ComputerMenu> {
 
     @Override
     protected void renderBg(GuiGraphics graphics, float partialTick, int mouseX, int mouseY) {
-        // Dark terminal background
         graphics.fill(leftPos, topPos, leftPos + imageWidth, topPos + imageHeight, 0xFF1A1A2E);
-        // Header bar
         graphics.fill(leftPos, topPos, leftPos + imageWidth, topPos + 20, 0xFF0F3460);
     }
 
@@ -72,11 +70,9 @@ public class ComputerScreen extends AbstractContainerScreen<ComputerMenu> {
     public void render(GuiGraphics graphics, int mouseX, int mouseY, float delta) {
         super.render(graphics, mouseX, mouseY, delta);
 
-        // Question text (word-wrapped manually or with drawWordWrap)
         graphics.drawString(font, ">> " + currentQuestion.prompt(),
-            leftPos + 10, topPos + 26, 0x00FF41); // green terminal color
+            leftPos + 10, topPos + 26, 0x00FF41);
 
-        // Feedback line
         if (!feedback.isEmpty()) {
             graphics.drawString(font, feedback,
                 leftPos + 10, topPos + 185, feedbackColor);
@@ -85,6 +81,6 @@ public class ComputerScreen extends AbstractContainerScreen<ComputerMenu> {
 
     @Override
     protected void renderLabels(GuiGraphics graphics, int mouseX, int mouseY) {
-        // Suppress default title rendering
+        // suppress default title rendering
     }
 }

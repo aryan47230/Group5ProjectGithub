@@ -1,5 +1,7 @@
 package com.example.examplemod.block.custom;
 
+import java.util.List;
+
 public class QuestionBank {
 
     public record Question(String prompt, String[] choices, int correctIndex) {}

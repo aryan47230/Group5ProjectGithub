@@ -1,57 +1,49 @@
 package com.example.examplemod;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.SpawnPlacementTypes;
 import net.minecraft.world.entity.SpawnPlacements;
-import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.neoforged.api.distmarker.Dist;
+import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
+import net.neoforged.neoforge.client.event.EntityRenderersEvent;
+import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.neoforged.neoforge.client.gui.ConfigurationScreen;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
-import net.neoforged.neoforge.client.event.EntityRenderersEvent;
-import net.neoforged.neoforge.client.event.EntityRenderersEvent.RegisterRenderers;
 
 import static com.example.examplemod.cs124uiuc.CLAUDE_ENEMY;
 import static com.example.examplemod.cs124uiuc.CLAUDE_ENEMY_LAYER;
 
 import com.example.examplemod.entity.ClaudeEnemy.ClaudeEnemy;
-import com.example.examplemod.entity.ClaudeEnemy.ClaudeEnemy;
 import com.example.examplemod.entity.ClaudeEnemy.ClaudeEnemyModel;
 import com.example.examplemod.entity.ClaudeEnemy.ClaudeEnemyRenderer;
+import com.example.examplemod.screen.ModMenuTypes;
+import com.example.examplemod.screen.custom.ComputerScreen;
 
-// This class will not load on dedicated servers. Accessing client side code from here is safe.
 @Mod(value = cs124uiuc.MODID, dist = Dist.CLIENT)
-// You can use EventBusSubscriber to automatically register all static methods
-// in the class annotated with @SubscribeEvent
 @EventBusSubscriber(modid = cs124uiuc.MODID, value = Dist.CLIENT)
 public class cs124uiucClient {
-    public cs124uiucClient(ModContainer container) {
-        // Allows NeoForge to create a config screen for this mod's configs.
-        // The config screen is accessed by going to the Mods screen > clicking on your
-        // mod > clicking on config.
-        // Do not forget to add translations for your config options to the en_us.json
-        // file.
+    public cs124uiucClient(ModContainer container, IEventBus modEventBus) {
         container.registerExtensionPoint(IConfigScreenFactory.class, ConfigurationScreen::new);
+        modEventBus.addListener((RegisterMenuScreensEvent event) ->
+            event.register(ModMenuTypes.COMPUTER_MENU.get(), ComputerScreen::new));
     }
 
     @SubscribeEvent
     static void onClientSetup(FMLClientSetupEvent event) {
-        // Some client setup code
         cs124uiuc.LOGGER.info("HELLO FROM CLIENT SETUP");
         cs124uiuc.LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
     }
 
-    @SubscribeEvent // on the mod event bus only on the physical client
+    @SubscribeEvent
     public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
         event.registerEntityRenderer(CLAUDE_ENEMY.get(), ClaudeEnemyRenderer::new);
     }
@@ -61,17 +53,10 @@ public class cs124uiucClient {
         event.registerLayerDefinition(CLAUDE_ENEMY_LAYER, ClaudeEnemyModel::createBodyLayer);
     }
 
-    @SubscribeEvent // on the mod event bus
+    @SubscribeEvent
     public static void createDefaultAttributes(EntityAttributeCreationEvent event) {
         event.put(
-                // Your entity type.
                 CLAUDE_ENEMY.get(),
-                // An AttributeSupplier. This is typically created by calling
-                // LivingEntity#createLivingAttributes,
-                // setting your values on it, and calling #build. You can also create the
-                // AttributeSupplier from scratch
-                // if you want, see the source of LivingEntity#createLivingAttributes for an
-                // example.
                 ClaudeEnemy.createAttributes()
                         .build());
     }
@@ -85,5 +70,4 @@ public class cs124uiucClient {
                 (entityType, level, spawnType, pos, random) -> true,
                 RegisterSpawnPlacementsEvent.Operation.REPLACE);
     }
-
 }

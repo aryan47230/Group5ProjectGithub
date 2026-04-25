@@ -1,32 +1,21 @@
 package com.example.examplemod.block.custom;
 
-public record AnswerPacket(int choiceIndex) {
+import io.netty.buffer.ByteBuf;
+import net.minecraft.network.codec.ByteBufCodecs;
+import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
+import net.minecraft.resources.ResourceLocation;
 
-    public static final ResourceLocation ID =
-        ResourceLocation.fromNamespaceAndPath(ModRegistry.MOD_ID, "answer_packet");
+public record AnswerPacket(int choiceIndex) implements CustomPacketPayload {
+    public static final Type<AnswerPacket> TYPE = new Type<>(
+        ResourceLocation.fromNamespaceAndPath("cs124uiuc", "answer_packet"));
+    public static final StreamCodec<ByteBuf, AnswerPacket> STREAM_CODEC = StreamCodec.composite(
+        ByteBufCodecs.INT, AnswerPacket::choiceIndex,
+        AnswerPacket::new
+    );
 
-    public static void encode(AnswerPacket pkt, FriendlyByteBuf buf) {
-        buf.writeInt(pkt.choiceIndex());
-    }
-
-    public static AnswerPacket decode(FriendlyByteBuf buf) {
-        return new AnswerPacket(buf.readInt());
-    }
-
-    public static void handle(AnswerPacket pkt, IPayloadContext ctx) {
-        ctx.enqueueWork(() -> {
-            Player player = ctx.player();
-            if (player.containerMenu instanceof ComputerMenu menu) {
-                Level level = player.level();
-                BlockEntity be = level.getBlockEntity(menu.getBlockPos());
-                if (be instanceof ComputerBlockEntity computer) {
-                    // Check stored correct answer (see Screen section)
-                    int correct = ((ComputerScreen) Minecraft.getInstance().screen).getCurrentCorrectIndex();
-                    if (pkt.choiceIndex() == correct) {
-                        computer.rewardPlayer(player);
-                    }
-                }
-            }
-        });
+    @Override
+    public Type<? extends CustomPacketPayload> type() {
+        return TYPE;
     }
 }

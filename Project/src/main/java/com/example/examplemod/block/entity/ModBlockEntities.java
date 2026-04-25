@@ -18,7 +18,7 @@ public class ModBlockEntities {
 
     public static final Supplier<BlockEntityType<ComputerBlockEntity>> COMPUTER_BE =
             BLOCK_ENTITIES.register("computer_be", () -> new BlockEntityType<>(
-                    ComputerBlockEntity::new, ModBlocks.PEDESTAL.get()));
+                    ComputerBlockEntity::new, ModBlocks.COMPUTER.get()));
 
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITIES.register(eventBus);
