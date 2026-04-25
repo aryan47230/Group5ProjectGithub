@@ -169,8 +169,8 @@ public class cs124uiuc {
 
                 ENTITIES.register(modEventBus);
 
-                NeoForge.EVENT_BUS.register(new WindHandler());
-
+                // NeoForge.EVENT_BUS.register(new WindHandler());
+                NeoForge.EVENT_BUS.register(new WindEventHandler());
         }
 
         private void commonSetup(FMLCommonSetupEvent event) {
@@ -202,6 +202,10 @@ public class cs124uiuc {
                 LOGGER.info("HELLO from server starting");
         }
 
+        @SubscribeEvent
+        public void onRegisterCommands(net.neoforged.neoforge.event.RegisterCommandsEvent event) {
+                WindCommand.register(event.getDispatcher());
+        }
         /*
          * @EventBusSubscriber(modid = cs124uiuc.MODID, bus =
          * EventBusSubscriber.Bus.Mod, value=Dist.client)
