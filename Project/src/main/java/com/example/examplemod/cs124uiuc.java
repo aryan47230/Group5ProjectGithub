@@ -1,7 +1,5 @@
 package com.example.examplemod;
 
-import javax.swing.text.html.parser.Entity;
-
 import org.slf4j.Logger;
 
 import com.example.examplemod.entity.ModEntities;
@@ -10,23 +8,25 @@ import com.example.examplemod.entity.client.GooseRenderer;
 import com.example.examplemod.entity.custom.GooseEntity;
 import com.example.examplemod.item.ModItems;
 import com.example.examplemod.item.UsePortalConsumeEffect;
-//import com.example.examplemod.item.UsePortalConsumeEffect;
 import com.example.examplemod.sound.ModSounds;
+import com.example.examplemod.block.ModBlocks;
+import com.example.examplemod.item.ModCreativeModeTabs;
+import com.example.examplemod.block.entity.ModBlockEntities;
+import com.example.examplemod.dimension.ModDimensions;
+import com.example.examplemod.entity.ClaudeEnemy.ClaudeEnemy;
 import com.mojang.logging.LogUtils;
 import java.util.function.Supplier;
 
 import net.minecraft.client.renderer.entity.EntityRenderers;
-import net.minecraft.client.gui.font.providers.UnihexProvider.Dimensions;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.ExtraCodecs;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
@@ -55,16 +55,6 @@ import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
-import com.example.examplemod.item.ModItems;
-import com.example.examplemod.block.ModBlocks;
-import com.example.examplemod.item.ModCreativeModeTabs;
-import com.example.examplemod.block.entity.ModBlockEntities;
-import com.example.examplemod.dimension.ModDimensions;
-import com.example.examplemod.entity.ClaudeEnemy.ClaudeEnemy;
-
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.MobCategory;
-import java.util.function.Supplier;
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(cs124uiuc.MODID)
@@ -171,39 +161,47 @@ public class cs124uiuc {
 
                 ENTITIES.register(modEventBus);
 
-                NeoForge.EVENT_BUS.register(new WindHandler());
-
+                // NeoForge.EVENT_BUS.register(new WindHandler());
+                NeoForge.EVENT_BUS.register(new WindEventHandler());
         }
 
-        private void commonSetup(FMLCommonSetupEvent event) {
-                // Some common setup code
-                LOGGER.info("HELLO FROM COMMON SETUP");
+        LOGGER.info("{}{}", Config.MAGIC_NUMBER_INTRODUCTION.get(), Config.MAGIC_NUMBER.getAsInt());
 
-                if (Config.LOG_DIRT_BLOCK.getAsBoolean()) {
-                        LOGGER.info("DIRT BLOCK >> {}", BuiltInRegistries.BLOCK.getKey(Blocks.DIRT));
-                }
+        Config.ITEM_STRINGS.get().forEach((item) -> LOGGER.info("ITEM >> {}", item));
+    }
 
-                LOGGER.info("{}{}", Config.MAGIC_NUMBER_INTRODUCTION.get(), Config.MAGIC_NUMBER.getAsInt());
-
-                Config.ITEM_STRINGS.get().forEach((item) -> LOGGER.info("ITEM >> {}", item));
+    // Add the example block item to the building blocks tab
+    private void addCreative(BuildCreativeModeTabContentsEvent event) {
+        if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
+            event.accept(EXAMPLE_BLOCK_ITEM);
+        } else if (event.getTabKey() == CreativeModeTabs.SPAWN_EGGS) {
+            event.accept((ItemLike) ModItems.GOOSE_SPAWN_EGG.get());
         }
+    }
 
-        // Add the example block item to the building blocks tab
-        private void addCreative(BuildCreativeModeTabContentsEvent event) {
-                if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
-                        event.accept(EXAMPLE_BLOCK_ITEM);
-                } else if (event.getTabKey() == CreativeModeTabs.SPAWN_EGGS) {
-                        event.accept((ItemLike) ModItems.GOOSE_SPAWN_EGG.get());
-                }
-        }
+    // You can use SubscribeEvent and let the Event Bus discover methods to call
+    @SubscribeEvent
+    public void onServerStarting(ServerStartingEvent event) {
+        LOGGER.info("HELLO from server starting");
+    }
 
-        // You can use SubscribeEvent and let the Event Bus discover methods to call
+    @SubscribeEvent
+    public void onRegisterCommands(net.neoforged.neoforge.event.RegisterCommandsEvent event) {
+        WindCommand.register(event.getDispatcher());
+    }
+
+    /*
+    @EventBusSubscriber(modid = cs124uiuc.MODID, bus = EventBusSubscriber.Bus.Mod, value=Dist.client)
+    public static class ClientModEvents {
         @SubscribeEvent
-        public void onServerStarting(ServerStartingEvent event) {
-                // Do something when the server starts
-                LOGGER.info("HELLO from server starting");
+        public static void onClientSetup(FMLClientSetupEvent event) {
+            EntityRenderers.register(ModEntities.GOOSE.get(), GooseRenderer::new);
         }
 
+        @SubscribeEvent
+        public void onRegisterCommands(net.neoforged.neoforge.event.RegisterCommandsEvent event) {
+                WindCommand.register(event.getDispatcher());
+        }
         /*
          * @EventBusSubscriber(modid = cs124uiuc.MODID, bus =
          * EventBusSubscriber.Bus.Mod, value=Dist.client)
