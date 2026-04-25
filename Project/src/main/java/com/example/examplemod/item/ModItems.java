@@ -4,7 +4,6 @@ import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
@@ -37,7 +36,9 @@ public class ModItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems("cs124uiuc");
     public static final DeferredHolder<Item, SpawnEggItem> GOOSE_SPAWN_EGG;
     public static final DeferredItem<Item> GOLDEN_EGG;
-    public static final DeferredItem<Item> EVIL_EGG;
+    public static final DeferredItem<Item> RAW_BISMUTH = ITEMS.registerSimpleItem("raw_bismuth");
+    public static final DeferredItem<Item> BISMUTH = ITEMS.registerSimpleItem("bismuth");
+    public static final DeferredItem<Item> CHISEL = ITEMS.registerSimpleItem("chisel");
 
     public ModItems() {
     }
@@ -47,11 +48,20 @@ public class ModItems {
     }
 
     static {
-        GOOSE_SPAWN_EGG = ITEMS.register("goose_spawn_egg", () -> new SpawnEggItem((new Item.Properties()).spawnEgg((EntityType)ModEntities.GOOSE.get()).setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("cs124uiuc", "goose_spawn_egg")))));
-        GOLDEN_EGG = ITEMS.registerSimpleItem("golden_egg", (props) -> props.component(DataComponents.CONSUMABLE, Consumable.builder().consumeSeconds(2.0F).animation(ItemUseAnimation.EAT).sound(SoundEvents.ARMOR_EQUIP_CHAIN).soundAfterConsume(SoundEvents.ARMOR_EQUIP_CHAIN).hasConsumeParticles(true).onConsume(new UsePortalConsumeEffect(0.5F)).build()));
-        EVIL_EGG = ITEMS.registerSimpleItem("evil_egg", (props) -> props.component(DataComponents.CONSUMABLE, Consumable.builder().consumeSeconds(2.0F).animation(ItemUseAnimation.EAT).sound(SoundEvents.ARMOR_EQUIP_CHAIN).soundAfterConsume(SoundEvents.ARMOR_EQUIP_CHAIN).hasConsumeParticles(true).onConsume(
-                // When finished consuming, applies the effects with a 30% chance
-                new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.SLOW_FALLING, 600, 0), 1.0F)
-            ).onConsume(new UseUIUCConsumeEffect(-0.5F)).build()));
+        GOOSE_SPAWN_EGG = ITEMS.register("goose_spawn_egg",
+                () -> new SpawnEggItem((new Item.Properties()).spawnEgg((EntityType) ModEntities.GOOSE.get())
+                        .setId(ResourceKey.create(Registries.ITEM,
+                                ResourceLocation.fromNamespaceAndPath("cs124uiuc", "goose_spawn_egg")))));
+        GOLDEN_EGG = ITEMS.registerSimpleItem(
+                "golden_egg",
+                props -> props.component(
+                        DataComponents.CONSUMABLE,
+                        Consumable.builder()
+                                .consumeSeconds(2f)
+                                .animation(ItemUseAnimation.EAT)
+                                .hasConsumeParticles(false)
+                                .onConsume(
+                                        new UsePortalConsumeEffect())
+                                .build()));
     }
 }
