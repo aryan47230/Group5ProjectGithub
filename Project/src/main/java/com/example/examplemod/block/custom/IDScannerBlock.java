@@ -40,6 +40,6 @@ public class IDScannerBlock extends Block {
 
     @Override
     protected int getSignal(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
-        return state.getValue(POWERED) ? 15 : 0;
+        return state.getValue(POWERED) ? 3 : 0; // Second number is redstone output strength
     }
 }
