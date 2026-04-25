@@ -85,5 +85,4 @@ public class cs124uiucClient {
                 (entityType, level, spawnType, pos, random) -> true,
                 RegisterSpawnPlacementsEvent.Operation.REPLACE);
     }
-
 }
