@@ -109,24 +109,28 @@ public class GooseEntity extends Monster {
 
     public void aiStep() {
         super.aiStep();
-
-        if (this.level().isClientSide()) {
-            //if (this.getSpeed() > -0.5f && this.getSpeed() < 0.5f) {
-            //    if (!this.sitting.isStarted()) {
-            //        this.walking.stop();
-            //        this.attacking.stop();
-            //        this.sitting.start(this.tickCount);
-            //    }
-            //} else {
-                if (this.getTarget() != null && !this.attacking.isStarted()) {
-                    this.walking.stop();
-                    this.attacking.start(this.tickCount);
-                } else if (!this.walking.isStarted()) {
-                    this.attacking.stop();
-                    this.walking.start(this.tickCount);
-                }
-            //}
+        if (this.level().isClientSide() && this.animationEnded(this.attacking, 0.9F)) {
+            Vec3 vel = this.getDeltaMovement();
+            if (Math.abs(vel.x()) + Math.abs(vel.y()) + Math.abs(vel.z()) > (double)0.1F) {
+                this.sitting.stop();
+                this.walking.stop();
+                this.attacking.start(this.tickCount);
+            } else {
+                this.walking.stop();
+                this.attacking.stop();
+                this.sitting.start(this.tickCount);
+            }
         }
+
+    }
+
+    public void handleEntityEvent(byte p_397414_) {
+        if (p_397414_ == 4 && this.animationEnded(this.attacking, 0.9F)) {
+            this.attacking.stop();
+            this.sitting.stop();
+            this.walking.start(this.tickCount);
+        }
+
     }
 
 
@@ -179,7 +183,6 @@ public class GooseEntity extends Monster {
                 .add(Attributes.ATTACK_DAMAGE, (double)3.0F)
                 .add(Attributes.ARMOR, (double)0.0F)
                 .add(Attributes.ATTACK_KNOCKBACK, (double)8.0F)
-                .add(Attributes.KNOCKBACK_RESISTANCE, (double)1.0F)
                 .add(Attributes.STEP_HEIGHT, (double)1.0F)
                 .add(Attributes.SCALE, (double)2.0f);
     }
