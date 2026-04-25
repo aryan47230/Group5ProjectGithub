@@ -8,6 +8,7 @@ import com.example.examplemod.entity.client.GooseRenderer;
 import com.example.examplemod.entity.custom.GooseEntity;
 import com.example.examplemod.item.ModItems;
 import com.example.examplemod.item.UsePortalConsumeEffect;
+import com.example.examplemod.item.UseUIUCConsumeEffect;
 import com.example.examplemod.sound.ModSounds;
 import com.example.examplemod.block.ModBlocks;
 import com.example.examplemod.item.ModCreativeModeTabs;
@@ -163,9 +164,11 @@ public class cs124uiuc {
 
                 // NeoForge.EVENT_BUS.register(new WindHandler());
                 NeoForge.EVENT_BUS.register(new WindEventHandler());
-        }
         
-        private void commonSetup(FMLCommonSetupEvent event) {
+
+        }
+
+    private void commonSetup(FMLCommonSetupEvent event) {
                 // Some common setup code
                 LOGGER.info("HELLO FROM COMMON SETUP");
 
@@ -184,6 +187,9 @@ public class cs124uiuc {
             event.accept(EXAMPLE_BLOCK_ITEM);
         } else if (event.getTabKey() == CreativeModeTabs.SPAWN_EGGS) {
             event.accept((ItemLike) ModItems.GOOSE_SPAWN_EGG.get());
+        } else if (event.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS) {
+            event.accept((ItemLike)ModItems.GOLDEN_EGG.get());
+            event.accept((ItemLike)ModItems.EVIL_EGG.get());
         }
     }
 
