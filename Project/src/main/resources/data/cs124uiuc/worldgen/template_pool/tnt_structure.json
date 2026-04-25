@@ -2,7 +2,7 @@
     "name": "cs124uiuc:tnt_structure",
     "elements": [
         {
-            "weight": 1,
+            "weight": 5,
             "element": {
                 "element_type": "minecraft:single_pool_element",
                 "projection": "rigid",
@@ -11,7 +11,7 @@
             }
         },
         {
-            "weight": 1,
+            "weight": 15,
             "element": {
                 "element_type": "minecraft:single_pool_element",
                 "projection": "rigid",
@@ -20,7 +20,7 @@
             }
         },
         {
-            "weight": 1,
+            "weight": 15,
             "element": {
                 "element_type": "minecraft:single_pool_element",
                 "projection": "rigid",
@@ -29,7 +29,7 @@
             }
         },
         {
-            "weight": 1,
+            "weight": 15,
             "element": {
                 "element_type": "minecraft:single_pool_element",
                 "projection": "rigid",
@@ -38,7 +38,7 @@
             }
         },
         {
-            "weight": 1,
+            "weight": 15,
             "element": {
                 "element_type": "minecraft:single_pool_element",
                 "projection": "rigid",
@@ -47,7 +47,7 @@
             }
         },
         {
-            "weight": 1,
+            "weight": 15,
             "element": {
                 "element_type": "minecraft:single_pool_element",
                 "projection": "rigid",
@@ -56,11 +56,47 @@
             }
         },
         {
-            "weight": 1,
+            "weight": 5,
             "element": {
                 "element_type": "minecraft:single_pool_element",
                 "projection": "rigid",
                 "location": "cs124uiuc:streetlamp",
+                "processors": []
+            }
+        },
+        {
+            "weight": 5,
+            "element": {
+                "element_type": "minecraft:single_pool_element",
+                "projection": "rigid",
+                "location": "cs124uiuc:chemcbtf1",
+                "processors": []
+            }
+        },
+        {
+            "weight": 5,
+            "element": {
+                "element_type": "minecraft:single_pool_element",
+                "projection": "rigid",
+                "location": "cs124uiuc:chemcbtf2",
+                "processors": []
+            }
+        },
+        {
+            "weight": 5,
+            "element": {
+                "element_type": "minecraft:single_pool_element",
+                "projection": "rigid",
+                "location": "cs124uiuc:cif",
+                "processors": []
+            }
+        },
+        {
+            "weight": 10,
+            "element": {
+                "element_type": "minecraft:single_pool_element",
+                "projection": "rigid",
+                "location": "cs124uiuc:gardens",
                 "processors": []
             }
         },
