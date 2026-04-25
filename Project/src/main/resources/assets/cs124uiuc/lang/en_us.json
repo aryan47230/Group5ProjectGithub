@@ -2,6 +2,11 @@
   "item.cs124uiuc.bismuth": "Bismuth",
   "item.cs124uiuc.raw_bismuth": "Raw Bismuth",
   "item.cs124uiuc.chisel": "Chisel",
+  "item.cs124uiuc.golden_egg": "Golden Egg",
+  "item.cs124uiuc.evil_egg": "Acceptance Letter",
+  "item.cs124uiuc.goose_spawn_egg": "Goose Spawn Egg",
+  "entity.cs124uiuc.goose" : "Goose",
+  "entity.cs124uiuc.claude_enemy" : "Claude",
 
   
   "item.cs124uiuc.bismuth_block": "Block of Bismuth",
