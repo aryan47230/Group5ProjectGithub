@@ -8,25 +8,24 @@ public class QuestionBank {
 
     public static final List<Question> QUESTIONS = List.of(
         new Question(
-            "What does 'int' stand for in Java?",
-            new String[]{"Internal", "Integer", "Interval", "Interface"},
-            1
+            "To store the value 10.8 in a variable, what\nwould be a good Java numeric type to use?",
+            new String[]{"int", "long", "byte", "float"},
+            3
         ),
         new Question(
-            "Which symbol starts a comment in Python?",
-            new String[]{"//", "/*", "#", "--"},
+            "Which of the following is the correct way to\nwrite a single-line comment in Java?",
+            new String[]{"# This is a comment", "* This is a comment", "// This is a comment", "/* This is a comment */"},
             2
         ),
         new Question(
-            "What is 2^8?",
-            new String[]{"128", "256", "512", "64"},
+            "Ruchi Sanghvi is known for contributing\nto what Facebook feature?",
+            new String[]{"the Like button", "the News Feed", "Facebook Groups", "Facebook Messenger"},
             1
         ),
         new Question(
-            "What does CPU stand for?",
-            new String[]{"Central Processing Unit", "Computer Power Unit",
-                         "Core Processing Utility", "Central Program Uplink"},
-            0
+            "A node that has no children and appears\nat the end of a branch is called a",
+            new String[]{"terminal", "endpoint", "tail", "leaf"},
+            3
         )
     );
 

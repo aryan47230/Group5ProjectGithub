@@ -38,7 +38,7 @@ public class cs124uiucClient {
     }
 
     @SubscribeEvent
-    static void onClientSetup(FMLClientSetupEvent event) {
+    public static void onClientSetup(FMLClientSetupEvent event) {
         cs124uiuc.LOGGER.info("HELLO FROM CLIENT SETUP");
         cs124uiuc.LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
     }
