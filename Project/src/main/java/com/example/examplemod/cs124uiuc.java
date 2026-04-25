@@ -59,88 +59,108 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(cs124uiuc.MODID)
 public class cs124uiuc {
-    public static final String MODID = "cs124uiuc";
-    public static final Logger LOGGER = LogUtils.getLogger();
-    // Create a Deferred Register to hold Blocks which will all be registered under the "cs124uiuc" namespace
-    public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(MODID);
-    // Create a Deferred Register to hold Items which will all be registered under the "cs124uiuc" namespace
-    public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(MODID);
-    // Create a Deferred Register to hold CreativeModeTabs which will all be registered under the "cs124uiuc" namespace
-    public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MODID);
-    // Consume effect types for portal usage
-    public static final DeferredRegister<ConsumeEffect.Type<?>> CONSUME_EFFECT_TYPES = DeferredRegister.create(Registries.CONSUME_EFFECT_TYPE, MODID);
-    public static final Supplier<ConsumeEffect.Type<UsePortalConsumeEffect>> USE_PORTAL = CONSUME_EFFECT_TYPES.register("use_portal", () -> new ConsumeEffect.Type<>(UsePortalConsumeEffect.CODEC, UsePortalConsumeEffect.STREAM_CODEC));
+        public static final String MODID = "cs124uiuc";
+        public static final Logger LOGGER = LogUtils.getLogger();
+        // Create a Deferred Register to hold Blocks which will all be registered under
+        // the "cs124uiuc" namespace
+        public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(MODID);
+        // Create a Deferred Register to hold Items which will all be registered under
+        // the "cs124uiuc" namespace
+        public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(MODID);
+        // Create a Deferred Register to hold CreativeModeTabs which will all be
+        // registered under the "cs124uiuc" namespace
+        public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister
+                        .create(Registries.CREATIVE_MODE_TAB, MODID);
+        // public static final DeferredRegister<ConsumeEffect.Type<?>>
+        // CONSUME_EFFECT_TYPES;
+        public static final DeferredRegister<ConsumeEffect.Type<?>> CONSUME_EFFECT_TYPES = DeferredRegister
+                        .create(Registries.CONSUME_EFFECT_TYPE, MODID);
+        public static final Supplier<ConsumeEffect.Type<UsePortalConsumeEffect>> USE_PORTAL =
+                        // CONSUME_EFFECT_TYPES.register("use_portal", () -> new
+                        // ConsumeEffect.Type<>(UsePortalConsumeEffect::new));
 
-    // Entity registration
-    public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(Registries.ENTITY_TYPE, MODID);
-    public static final Supplier<EntityType<ClaudeEnemy>> CLAUDE_ENEMY = ENTITIES.register("claude_enemy",
-            () -> EntityType.Builder.of(ClaudeEnemy::new, MobCategory.MONSTER)
-                    .sized(0.6f, 1.8f) // Hitbox size
-                    .build(ResourceKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath(MODID, "claude_enemy"))));
+                        CONSUME_EFFECT_TYPES.register("use_portal", () -> new ConsumeEffect.Type<>(
+                                        UsePortalConsumeEffect.CODEC, UsePortalConsumeEffect.STREAM_CODEC));
 
-    public static final ModelLayerLocation CLAUDE_ENEMY_LAYER = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(MODID, "claude_enemy"), "main");
+        public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(Registries.ENTITY_TYPE,
+                        MODID);
+        public static final Supplier<EntityType<ClaudeEnemy>> CLAUDE_ENEMY = ENTITIES.register("claude_enemy",
+                        () -> EntityType.Builder.of(ClaudeEnemy::new, MobCategory.MONSTER)
+                                        .sized(0.6f, 1.8f) // Hitbox size
+                                        .build(ResourceKey.create(
+                                                        Registries.ENTITY_TYPE,
+                                                        ResourceLocation.fromNamespaceAndPath(MODID, "claude_enemy"))));
 
-    // Creates a new Block with the id "cs124uiuc:example_block", combining the namespace and path
-    public static final DeferredBlock<Block> EXAMPLE_BLOCK = BLOCKS.registerSimpleBlock("example_block", p -> p.mapColor(MapColor.STONE));
-    // Creates a new BlockItem with the id "cs124uiuc:example_block", combining the namespace and path
-    public static final DeferredItem<BlockItem> EXAMPLE_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("example_block", EXAMPLE_BLOCK);
+        public static final ModelLayerLocation CLAUDE_ENEMY_LAYER = new ModelLayerLocation(
+                        ResourceLocation.fromNamespaceAndPath(MODID, "claude_enemy"), "main");
 
-    // Creates a new food item with the id "cs124uiuc:example_id", nutrition 1 and saturation 2
-    public static final DeferredItem<Item> EXAMPLE_ITEM = ITEMS.registerSimpleItem("example_item", p -> p.food(new FoodProperties.Builder()
-            .alwaysEdible().nutrition(1).saturationModifier(2f).build()));
+        // Creates a new Block with the id "cs124uiuc:example_block", combining the
+        // namespace and path
+        public static final DeferredBlock<Block> EXAMPLE_BLOCK = BLOCKS.registerSimpleBlock("example_block",
+                        p -> p.mapColor(MapColor.STONE));
+        // Creates a new BlockItem with the id "cs124uiuc:example_block", combining the
+        // namespace and path
+        public static final DeferredItem<BlockItem> EXAMPLE_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("example_block",
+                        EXAMPLE_BLOCK);
 
-    // Creates a creative tab with the id "cs124uiuc:example_tab" for the example item, that is placed after the combat tab
-    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> EXAMPLE_TAB = CREATIVE_MODE_TABS.register("example_tab", () -> CreativeModeTab.builder()
-            .title(Component.translatable("itemGroup.cs124uiuc")) //The language key for the title of your CreativeModeTab
-            .withTabsBefore(CreativeModeTabs.COMBAT)
-            .icon(() -> EXAMPLE_ITEM.get().getDefaultInstance())
-            .displayItems((parameters, output) -> {
-                output.accept(EXAMPLE_ITEM.get()); // Add the example item to the tab. For your own tabs, this method is preferred over the event
-            }).build());
+        // Creates a new food item with the id "cs124uiuc:example_id", nutrition 1 and
+        // saturation 2
+        public static final DeferredItem<Item> EXAMPLE_ITEM = ITEMS.registerSimpleItem("example_item",
+                        p -> p.food(new FoodProperties.Builder()
+                                        .alwaysEdible().nutrition(1).saturationModifier(2f).build()));
 
-    // The constructor for the mod class is the first code that is run when your mod is loaded.
-    // FML will recognize some parameter types like IEventBus or ModContainer and pass them in automatically.
-    public cs124uiuc(IEventBus modEventBus, ModContainer modContainer) {
-        // Register the commonSetup method for modloading
-        modEventBus.addListener(this::commonSetup);
-        NeoForge.EVENT_BUS.register(this);
-        BLOCKS.register(modEventBus);
-        ITEMS.register(modEventBus);
-        CREATIVE_MODE_TABS.register(modEventBus);
-        CONSUME_EFFECT_TYPES.register(modEventBus);
+        // Creates a creative tab with the id "cs124uiuc:example_tab" for the example
+        // item, that is placed after the combat tab
+        public static final DeferredHolder<CreativeModeTab, CreativeModeTab> EXAMPLE_TAB = CREATIVE_MODE_TABS
+                        .register("example_tab", () -> CreativeModeTab.builder()
+                                        .title(Component.translatable("itemGroup.cs124uiuc")) // The language key for
+                                                                                              // the title of your
+                                                                                              // CreativeModeTab
+                                        .withTabsBefore(CreativeModeTabs.COMBAT)
+                                        .icon(() -> EXAMPLE_ITEM.get().getDefaultInstance())
+                                        .displayItems((parameters, output) -> {
+                                                output.accept(EXAMPLE_ITEM.get()); // Add the example item to the tab.
+                                                                                   // For your own tabs, this method is
+                                                                                   // preferred over the event
+                                        }).build());
 
-        // Register ourselves for server and other game events we are interested in.
-        // Note that this is necessary if and only if we want *this* class (cs124uiuc) to respond directly to events.
-        // Do not add this line if there are no @SubscribeEvent-annotated functions in this class, like onServerStarting() below.
-        //NeoForge.EVENT_BUS.register(this);
+        // The constructor for the mod class is the first code that is run when your mod
+        // is loaded.
+        // FML will recognize some parameter types like IEventBus or ModContainer and
+        // pass them in automatically.
+        public cs124uiuc(IEventBus modEventBus, ModContainer modContainer) {
+                // Register the commonSetup method for modloading
+                modEventBus.addListener(this::commonSetup);
+                NeoForge.EVENT_BUS.register(this);
+                BLOCKS.register(modEventBus);
+                ITEMS.register(modEventBus);
+                CREATIVE_MODE_TABS.register(modEventBus);
+                CONSUME_EFFECT_TYPES.register(modEventBus);
 
-        ModItems.register(modEventBus);
-        ModBlocks.register(modEventBus);
-        ModCreativeModeTabs.register(modEventBus);
-        ModBlockEntities.register(modEventBus);
-        ModEntities.register(modEventBus);
-        ModSounds.register(modEventBus);
+                // Register ourselves for server and other game events we are interested in.
+                // Note that this is necessary if and only if we want *this* class (cs124uiuc)
+                // to respond directly to events.
+                // Do not add this line if there are no @SubscribeEvent-annotated functions in
+                // this class, like onServerStarting() below.
+                // NeoForge.EVENT_BUS.register(this);
 
-        ModDimensions.register();
+                ModItems.register(modEventBus);
+                ModEntities.register(modEventBus);
+                ModSounds.register(modEventBus);
 
-        // Register wind event system
-        NeoForge.EVENT_BUS.register(new WindEventHandler());
+                // Register the item to a creative tab
+                modEventBus.addListener(this::addCreative);
 
-        ENTITIES.register(modEventBus);
+                // Register our mod's ModConfigSpec so that FML can create and load the config
+                // file for us
+                modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
 
-        // Register the item to a creative tab
-        modEventBus.addListener(this::addCreative);
+                ModDimensions.register();
 
-        // Register our mod's ModConfigSpec so that FML can create and load the config file for us
-        modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
-    }
+                ENTITIES.register(modEventBus);
 
-    private void commonSetup(FMLCommonSetupEvent event) {
-        // Some common setup code
-        LOGGER.info("HELLO FROM COMMON SETUP");
-
-        if (Config.LOG_DIRT_BLOCK.getAsBoolean()) {
-            LOGGER.info("DIRT BLOCK >> {}", BuiltInRegistries.BLOCK.getKey(Blocks.DIRT));
+                // NeoForge.EVENT_BUS.register(new WindHandler());
+                NeoForge.EVENT_BUS.register(new WindEventHandler());
         }
 
         LOGGER.info("{}{}", Config.MAGIC_NUMBER_INTRODUCTION.get(), Config.MAGIC_NUMBER.getAsInt());
@@ -175,16 +195,35 @@ public class cs124uiuc {
         public static void onClientSetup(FMLClientSetupEvent event) {
             EntityRenderers.register(ModEntities.GOOSE.get(), GooseRenderer::new);
         }
-    }
 
-    @SubscribeEvent
-    public static void registerEntityRenderer(EntityRenderersEvent.RegisterRenderers event) {
-        event.registerEntityRenderer((EntityType)GooseEntity, (m) -> new GooseRenderer(m));
-    }
-
-    @SubscribeEvent
-    public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
-        event.registerLayerDefinition(GooseModel.LAYER_LOCATION, GooseModel::createBodyLayer);
-    }
-    */
+        @SubscribeEvent
+        public void onRegisterCommands(net.neoforged.neoforge.event.RegisterCommandsEvent event) {
+                WindCommand.register(event.getDispatcher());
+        }
+        /*
+         * @EventBusSubscriber(modid = cs124uiuc.MODID, bus =
+         * EventBusSubscriber.Bus.Mod, value=Dist.client)
+         * public static class ClientModEvents {
+         * 
+         * @SubscribeEvent
+         * public static void onClientSetup(FMLClientSetupEvent event) {
+         * EntityRenderers.register(ModEntities.GOOSE.get(), GooseRenderer::new);
+         * }
+         * }
+         * 
+         * @SubscribeEvent
+         * public static void
+         * registerEntityRenderer(EntityRenderersEvent.RegisterRenderers event) {
+         * event.registerEntityRenderer((EntityType)GooseEntity, (m) -> new
+         * GooseRenderer(m));
+         * }
+         * 
+         * @SubscribeEvent
+         * public static void
+         * registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event)
+         * {
+         * event.registerLayerDefinition(GooseModel.LAYER_LOCATION,
+         * GooseModel::createBodyLayer);
+         * }
+         */
 }
