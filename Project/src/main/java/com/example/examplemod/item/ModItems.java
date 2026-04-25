@@ -36,6 +36,7 @@ public class ModItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems("cs124uiuc");
     public static final DeferredHolder<Item, SpawnEggItem> GOOSE_SPAWN_EGG;
     public static final DeferredItem<Item> GOLDEN_EGG;
+    public static final DeferredItem<Item> EVIL_EGG;
     public static final DeferredItem<Item> RAW_BISMUTH = ITEMS.registerSimpleItem("raw_bismuth");
     public static final DeferredItem<Item> BISMUTH = ITEMS.registerSimpleItem("bismuth");
     public static final DeferredItem<Item> CHISEL = ITEMS.registerSimpleItem("chisel");
@@ -63,5 +64,9 @@ public class ModItems {
                                 .onConsume(
                                         new UsePortalConsumeEffect())
                                 .build()));
+        EVIL_EGG = ITEMS.registerSimpleItem("evil_egg", (props) -> props.component(DataComponents.CONSUMABLE, Consumable.builder().consumeSeconds(2.0F).animation(ItemUseAnimation.EAT).sound(SoundEvents.ARMOR_EQUIP_CHAIN).soundAfterConsume(SoundEvents.ARMOR_EQUIP_CHAIN).hasConsumeParticles(true).onConsume(
+                // When finished consuming, applies the effects with a 30% chance
+                new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.SLOW_FALLING, 600, 0), 1.0F)
+            ).onConsume(new UseUIUCConsumeEffect(-0.5F)).build()));
     }
 }
