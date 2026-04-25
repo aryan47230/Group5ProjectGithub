@@ -22,6 +22,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.BISMUTH.get());
                         output.accept(ModItems.RAW_BISMUTH.get());
                         output.accept(ModItems.CHISEL.get());
+                        output.accept(ModItems.ID.get());
                     }).build());
 
      public static final Supplier<CreativeModeTab> BISMUTH_BLOCK_TAB = CREATIVE_MODE_TAB.register("bismuth_blocks_tab", 
@@ -34,6 +35,8 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.BISMUTH_DEEPSLATE_ORE.get());
                         output.accept(ModBlocks.MAGIC_BLOCK.get());
                         output.accept(ModBlocks.PEDESTAL.get());
+                        output.accept(ModBlocks.PAVEMENT_BLOCK.get());
+                        output.accept(ModBlocks.ID_SCANNER.get());
                     }).build());
 
     

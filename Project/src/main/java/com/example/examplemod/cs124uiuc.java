@@ -154,7 +154,9 @@ public class cs124uiuc {
                 // this class, like onServerStarting() below.
                 // NeoForge.EVENT_BUS.register(this);
 
+                ModBlocks.register(modEventBus);
                 ModItems.register(modEventBus);
+                ModCreativeModeTabs.register(modEventBus);
                 ModEntities.register(modEventBus);
                 ModSounds.register(modEventBus);
 

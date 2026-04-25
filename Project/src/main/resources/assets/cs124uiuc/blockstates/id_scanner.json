@@ -1,0 +1,10 @@
+{
+    "variants": {
+        "powered=false": {
+            "model": "cs124uiuc:block/id_scanner"
+        },
+        "powered=true": {
+            "model": "cs124uiuc:block/id_scanner"
+        }
+    }
+}
