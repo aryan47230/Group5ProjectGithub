@@ -1,0 +1,18 @@
+{
+    "placement": {
+        "type": "minecraft:random_spread",
+        "salt": 14357619,
+        "separation": 3,
+        "spacing": 5
+    },
+    "exclusion_zone": {
+        "other_set": "cs124uiuc:tower_structure",
+        "chunk_count": 1
+    },
+    "structures": [
+        {
+            "structure": "cs124uiuc:tower_structure",
+            "weight": 1
+        }
+    ]
+}
