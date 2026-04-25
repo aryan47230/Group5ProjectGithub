@@ -2,7 +2,7 @@
     "name": "cs124uiuc:tnt_structure",
     "elements": [
         {
-            "weight": 1,
+            "weight": 5,
             "element": {
                 "element_type": "minecraft:single_pool_element",
                 "projection": "rigid",
@@ -11,7 +11,7 @@
             }
         },
         {
-            "weight": 1,
+            "weight": 15,
             "element": {
                 "element_type": "minecraft:single_pool_element",
                 "projection": "rigid",
@@ -20,7 +20,7 @@
             }
         },
         {
-            "weight": 1,
+            "weight": 15,
             "element": {
                 "element_type": "minecraft:single_pool_element",
                 "projection": "rigid",
@@ -29,7 +29,7 @@
             }
         },
         {
-            "weight": 1,
+            "weight": 15,
             "element": {
                 "element_type": "minecraft:single_pool_element",
                 "projection": "rigid",
@@ -38,7 +38,7 @@
             }
         },
         {
-            "weight": 1,
+            "weight": 15,
             "element": {
                 "element_type": "minecraft:single_pool_element",
                 "projection": "rigid",
@@ -47,7 +47,7 @@
             }
         },
         {
-            "weight": 1,
+            "weight": 15,
             "element": {
                 "element_type": "minecraft:single_pool_element",
                 "projection": "rigid",
@@ -56,7 +56,7 @@
             }
         },
         {
-            "weight": 1,
+            "weight": 5,
             "element": {
                 "element_type": "minecraft:single_pool_element",
                 "projection": "rigid",
@@ -65,7 +65,7 @@
             }
         },
         {
-            "weight": 1,
+            "weight": 5,
             "element": {
                 "element_type": "minecraft:single_pool_element",
                 "projection": "rigid",
@@ -74,7 +74,7 @@
             }
         },
         {
-            "weight": 1,
+            "weight": 5,
             "element": {
                 "element_type": "minecraft:single_pool_element",
                 "projection": "rigid",
@@ -83,7 +83,7 @@
             }
         },
         {
-            "weight": 1,
+            "weight": 5,
             "element": {
                 "element_type": "minecraft:single_pool_element",
                 "projection": "rigid",
@@ -92,7 +92,7 @@
             }
         },
         {
-            "weight": 1,
+            "weight": 10,
             "element": {
                 "element_type": "minecraft:single_pool_element",
                 "projection": "rigid",
