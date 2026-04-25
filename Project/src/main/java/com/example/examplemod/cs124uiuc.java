@@ -76,12 +76,8 @@ public class cs124uiuc {
         // CONSUME_EFFECT_TYPES;
         public static final DeferredRegister<ConsumeEffect.Type<?>> CONSUME_EFFECT_TYPES = DeferredRegister
                         .create(Registries.CONSUME_EFFECT_TYPE, MODID);
-        public static final Supplier<ConsumeEffect.Type<UsePortalConsumeEffect>> USE_PORTAL =
-                        // CONSUME_EFFECT_TYPES.register("use_portal", () -> new
-                        // ConsumeEffect.Type<>(UsePortalConsumeEffect::new));
-
-                        CONSUME_EFFECT_TYPES.register("use_portal", () -> new ConsumeEffect.Type<>(
-                                        UsePortalConsumeEffect.CODEC, UsePortalConsumeEffect.STREAM_CODEC));
+        public static final Supplier<ConsumeEffect.Type<UsePortalConsumeEffect>> USE_PORTAL = CONSUME_EFFECT_TYPES.register("use_portal", () -> new ConsumeEffect.Type(UsePortalConsumeEffect.CODEC, UsePortalConsumeEffect.STREAM_CODEC));
+        public static final Supplier<ConsumeEffect.Type<UseUIUCConsumeEffect>> USE_UIUC = CONSUME_EFFECT_TYPES.register("use_uiuc", () -> new ConsumeEffect.Type(UseUIUCConsumeEffect.CODEC, UseUIUCConsumeEffect.STREAM_CODEC));
 
         public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(Registries.ENTITY_TYPE,
                         MODID);
