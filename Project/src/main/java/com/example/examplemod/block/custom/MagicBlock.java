@@ -31,11 +31,9 @@ public class MagicBlock extends Block {
     @Override
     public void stepOn(Level level, BlockPos pos, BlockState state, Entity entity) {
         if (entity instanceof ItemEntity itemEntity) {
-            /*
             if (itemEntity.getItem().getItem() == ModItems.RAW_BISMUTH.get()) {
                 itemEntity.setItem(new ItemStack(Items.DIAMOND, itemEntity.getItem().getCount()));
             }
-                */
 
             if (itemEntity.getItem().getItem() == Items.DANDELION) {
                 itemEntity.setItem(new ItemStack(Items.WITHER_ROSE, itemEntity.getItem().getCount()));
