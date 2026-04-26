@@ -1,5 +1,8 @@
 package com.example.examplemod.item;
 
+import com.example.examplemod.entity.ModEntities;
+import com.example.examplemod.item.custom.ChiselItem;
+
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;

@@ -15,6 +15,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import com.example.examplemod.block.custom.IDScannerBlock;
 import com.example.examplemod.block.custom.MagicBlock;
 import com.example.examplemod.block.custom.PedestalBlock;
+import com.example.examplemod.block.custom.ComputerBlock;
 
 import java.util.function.Function;
 
@@ -55,6 +56,11 @@ public class ModBlocks {
 
         public static final DeferredBlock<Block> PEDESTAL = registerBlock("pedestal",
                 location -> new PedestalBlock(BlockBehaviour.Properties.of().noOcclusion()
+                    .setId(ResourceKey.create(Registries.BLOCK, location))
+                    .strength(2f).requiresCorrectToolForDrops()));
+
+        public static final DeferredBlock<Block> COMPUTER = registerBlock("computer",
+                location -> new ComputerBlock(BlockBehaviour.Properties.of().noOcclusion()
                     .setId(ResourceKey.create(Registries.BLOCK, location))
                     .strength(2f).requiresCorrectToolForDrops()));
 
