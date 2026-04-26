@@ -12,6 +12,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import com.example.examplemod.block.custom.IDScannerBlock;
 import com.example.examplemod.block.custom.MagicBlock;
 import com.example.examplemod.block.custom.PedestalBlock;
 import com.example.examplemod.block.custom.ComputerBlock;
@@ -40,6 +41,16 @@ public class ModBlocks {
 
         public static final DeferredBlock<Block> MAGIC_BLOCK = registerBlock("magic_block",
                 location -> new MagicBlock(BlockBehaviour.Properties.of()
+                    .setId(ResourceKey.create(Registries.BLOCK, location))
+                    .strength(2f).requiresCorrectToolForDrops()));
+
+        public static final DeferredBlock<Block> PAVEMENT_BLOCK = registerBlock("pavement",
+                location -> new Block(BlockBehaviour.Properties.of()
+                    .setId(ResourceKey.create(Registries.BLOCK, location))
+                    .strength(2f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+
+        public static final DeferredBlock<Block> ID_SCANNER = registerBlock("id_scanner",
+                location -> new IDScannerBlock(BlockBehaviour.Properties.of()
                     .setId(ResourceKey.create(Registries.BLOCK, location))
                     .strength(2f).requiresCorrectToolForDrops()));
 

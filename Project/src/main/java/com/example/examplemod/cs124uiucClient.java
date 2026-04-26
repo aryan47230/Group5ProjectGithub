@@ -1,7 +1,10 @@
 package com.example.examplemod;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.SpawnPlacementTypes;
 import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.level.levelgen.Heightmap;
@@ -22,6 +25,7 @@ import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
 import static com.example.examplemod.cs124uiuc.CLAUDE_ENEMY;
 import static com.example.examplemod.cs124uiuc.CLAUDE_ENEMY_LAYER;
 
+import com.example.examplemod.entity.ModEntities;
 import com.example.examplemod.entity.ClaudeEnemy.ClaudeEnemy;
 import com.example.examplemod.entity.ClaudeEnemy.ClaudeEnemyModel;
 import com.example.examplemod.entity.ClaudeEnemy.ClaudeEnemyRenderer;
@@ -31,7 +35,12 @@ import com.example.examplemod.screen.custom.ComputerScreen;
 @Mod(value = cs124uiuc.MODID, dist = Dist.CLIENT)
 @EventBusSubscriber(modid = cs124uiuc.MODID, value = Dist.CLIENT)
 public class cs124uiucClient {
-    public cs124uiucClient(ModContainer container, IEventBus modEventBus) {
+    public cs124uiucClient(ModContainer container) {
+        // Allows NeoForge to create a config screen for this mod's configs.
+        // The config screen is accessed by going to the Mods screen > clicking on your
+        // mod > clicking on config.
+        // Do not forget to add translations for your config options to the en_us.json
+        // 
         container.registerExtensionPoint(IConfigScreenFactory.class, ConfigurationScreen::new);
         modEventBus.addListener((RegisterMenuScreensEvent event) ->
             event.register(ModMenuTypes.COMPUTER_MENU.get(), ComputerScreen::new));
@@ -68,5 +77,6 @@ public class cs124uiucClient {
                 Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                 (entityType, level, spawnType, pos, random) -> true,
                 RegisterSpawnPlacementsEvent.Operation.REPLACE);
+        
     }
 }
