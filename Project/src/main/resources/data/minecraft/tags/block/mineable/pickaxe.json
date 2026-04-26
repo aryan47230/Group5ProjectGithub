@@ -3,6 +3,7 @@
     "values": [
         "cs124uiuc:bismuth_block",
         "cs124uiuc:bismuth_ore",
-        "cs124uiuc:bismuth_deepslate_ore"
+        "cs124uiuc:bismuth_deepslate_ore",
+        "cs124uiuc:pavement"
     ]
 }
