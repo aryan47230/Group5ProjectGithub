@@ -35,7 +35,7 @@ import com.example.examplemod.screen.custom.ComputerScreen;
 @Mod(value = cs124uiuc.MODID, dist = Dist.CLIENT)
 @EventBusSubscriber(modid = cs124uiuc.MODID, value = Dist.CLIENT)
 public class cs124uiucClient {
-    public cs124uiucClient(ModContainer container) {
+    public cs124uiucClient(ModContainer container, IEventBus modEventBus) {
         // Allows NeoForge to create a config screen for this mod's configs.
         // The config screen is accessed by going to the Mods screen > clicking on your
         // mod > clicking on config.
